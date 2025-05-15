@@ -1,0 +1,44 @@
+﻿@page
+@model CommunitiesModel
+@{
+    ViewData["Title"] = "Communities page";
+}
+
+<head>
+	<link rel="stylesheet" href="~/css/site.css" />
+	<meta charset="UTF-8">
+	<title>Tickets Page</title>
+	<style>
+		.parent {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 50px;
+		}
+
+		.community-card {
+			overflow-y: auto;
+			background-color: #99FFF5;
+			padding: 20px;
+			height: 500px;
+			border-radius: 10px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+		}
+    </style>
+</head>
+<body>
+	<div class="text-center">
+		<h1 class="display-4">Here are all communities</h1>
+		<div class="parent">
+			@foreach (var community in Model.Communities)
+			{
+				<div class="community-card">
+					<h2>@community.subject</h2>
+					<p><strong>Members:</strong> @community.memberCount</p>
+					<p>@community.description</p>
+					<button class="button">Join</button>
+				</div>
+			}
+		</div>
+		<p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+	</div>
+</body>

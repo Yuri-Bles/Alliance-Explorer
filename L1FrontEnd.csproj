@@ -15,7 +15,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibraryLogicLayer\ClassLibraryLogicLayer.csproj" />
+    <ProjectReference Include="..\ClassLibraryLogicLayer\L3LogicLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Pages\Communities.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

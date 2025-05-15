@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alliance Explorer", "Alliance Explorer.csproj", "{0BD55483-1D72-4DC5-83C8-546ED5E73881}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L1FrontEnd", "L1FrontEnd.csproj", "{0BD55483-1D72-4DC5-83C8-546ED5E73881}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassLibraryDAL", "..\ClassLibraryDAL\ClassLibraryDAL.csproj", "{9BEAD8CE-98C6-42A9-B588-BF89EB03EEA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L5DAL", "..\ClassLibraryDAL\L5DAL.csproj", "{9BEAD8CE-98C6-42A9-B588-BF89EB03EEA8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClassLibraryLogicLayer", "..\ClassLibraryLogicLayer\ClassLibraryLogicLayer.csproj", "{CFAE2304-3E68-418B-9F72-A8329D1D3FE3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L3LogicLayer", "..\ClassLibraryLogicLayer\L3LogicLayer.csproj", "{CFAE2304-3E68-418B-9F72-A8329D1D3FE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AllianceExplorerTesting", "..\AllianceExplorerTesting\AllianceExplorerTesting.csproj", "{F6F8FE5B-8095-4C77-9C1C-F638072F687B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L6AllianceExplorerTesting", "..\AllianceExplorerTesting\L6AllianceExplorerTesting.csproj", "{F6F8FE5B-8095-4C77-9C1C-F638072F687B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L4DTOs", "..\DTOs\L4DTOs.csproj", "{E609AAAC-C99C-40B2-A3B0-D72F6FA17553}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{F6F8FE5B-8095-4C77-9C1C-F638072F687B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6F8FE5B-8095-4C77-9C1C-F638072F687B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6F8FE5B-8095-4C77-9C1C-F638072F687B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E609AAAC-C99C-40B2-A3B0-D72F6FA17553}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E609AAAC-C99C-40B2-A3B0-D72F6FA17553}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E609AAAC-C99C-40B2-A3B0-D72F6FA17553}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E609AAAC-C99C-40B2-A3B0-D72F6FA17553}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

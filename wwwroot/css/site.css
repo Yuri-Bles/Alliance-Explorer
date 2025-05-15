@@ -18,5 +18,21 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #D6FFFB;
 }
+
+.button {
+    background-color: #233F80;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+    .button:hover {
+        background-color: #2C4FA0;
+    }
