@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Alliance_Explorer.Pages
 {
-	public class CommunitiesModel : PageModel
+	public class CommunityCreationModel : PageModel
 	{
         public List<Community> Communities { get; set; } = new List<Community>();
         public void Onget()

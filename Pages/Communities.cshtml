@@ -28,6 +28,9 @@
 <body>
 	<div class="text-center">
 		<h1 class="display-4">Here are all communities</h1>
+		<form method="post">
+			<button class="button" asp-area="" asp-page="/CommunityCreation">+</button>
+		</form>
 		<div class="parent">
 			@foreach (var community in Model.Communities)
 			{
