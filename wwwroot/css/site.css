@@ -36,3 +36,14 @@ body {
     .button:hover {
         background-color: #2C4FA0;
     }
+
+.textbox {
+    padding: 10px;
+    background-color: #99FFF5;
+    border-color: #000000;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    width: 80%;
+    transition: border-color 0.3s;
+}

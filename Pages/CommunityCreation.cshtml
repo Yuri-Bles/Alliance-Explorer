@@ -15,6 +15,20 @@
 <body>
 	<div class="text-center">
 		<h1 class="display-4">Create a Community</h1>
+		
+		<form method="post">
+			<h3 class="display-8">Subject</h3>
+			<input class="textbox" type="text" id="subject" name="subject" asp-for="subject">
+
+			<h3 class="display-8">Language</h3>
+			<input class="textbox" type="text" id="language" name="language" asp-for="language">
+
+			<h3 class="display-8">Description</h3>
+			<textarea class="textbox" type="text" id="description" name="description" asp-for="description"></textarea>
+
+			<h1></h1>
+			<button class="button" asp-area="" asp-page-handler="Create">Create</button>
+		</form>
 		<p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 	</div>
 </body>
