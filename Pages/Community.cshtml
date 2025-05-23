@@ -1,0 +1,46 @@
+﻿@page
+@model CommunityModel
+@{
+    ViewData["Title"] = "Community page";
+}
+
+<head>
+	<link rel="stylesheet" href="~/css/site.css" />
+	<meta charset="UTF-8">
+	<title>Tickets Page</title>
+	<style>
+		.parent {
+			display: grid;
+			grid-template-columns: 3fr repeat(2, 2fr);
+			grid-template-rows: repeat(2, 1fr) 5fr;
+			grid-column-gap: 15px;
+			grid-row-gap: 15px;
+		}
+
+		.alliance-card {
+			overflow-y: auto;
+			background-color: #99FFF5;
+			padding: 20px;
+			height: 400px;
+			border-radius: 10px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+		}
+    </style>
+</head>
+<body>
+	<div class="text-center">
+		<h1 class="display-4">Here are all alliances</h1>
+		<div class="parent">
+			@foreach (var alliance in Model.Alliances)
+			{
+				<div class="alliance-card">
+					<h2>@alliance.name</h2>
+					<p><strong>Crewmembers:</strong> @alliance.GetCrewMembers().Count</p>
+					<p>@alliance.rules</p>
+					<button class="button">Join</button>
+				</div>
+			}
+		</div>
+		<p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+	</div>
+</body>
