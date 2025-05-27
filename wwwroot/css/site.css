@@ -47,3 +47,13 @@ body {
     width: 80%;
     transition: border-color 0.3s;
 }
+
+.account {
+    color: #000000;
+    background-color: #99FFF5;
+    overflow: visible;
+    height: auto;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}

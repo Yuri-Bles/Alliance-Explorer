@@ -1,7 +1,7 @@
 ﻿@page
 @model CommunityModel
 @{
-    ViewData["Title"] = "Community page";
+	ViewData["Title"] = "Community page";
 }
 
 <head>
@@ -12,7 +12,7 @@
 		.parent {
 			display: grid;
 			grid-template-columns: 3fr repeat(2, 2fr);
-			grid-template-rows: repeat(2, 1fr) 5fr;
+			grid-auto-rows: min-content;
 			grid-column-gap: 15px;
 			grid-row-gap: 15px;
 		}
@@ -24,12 +24,21 @@
 			height: 400px;
 			border-radius: 10px;
 			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+			grid-column: 2;
+		}
+
+		.accounts-column {
+			display: flex;
+			flex-direction: column;
+			gap: 15px; /* space between each account card */
+			grid-column: 3;
+			grid-row: 1;
 		}
     </style>
 </head>
 <body>
 	<div class="text-center">
-		<h1 class="display-4">Here are all alliances</h1>
+		<h1 class="display-4">@Model.CommunitySubject</h1>
 		<div class="parent">
 			@foreach (var alliance in Model.Alliances)
 			{
@@ -37,9 +46,18 @@
 					<h2>@alliance.name</h2>
 					<p><strong>Crewmembers:</strong> @alliance.GetCrewMembers().Count</p>
 					<p>@alliance.rules</p>
-					<button class="button">Join</button>
+					<button class="button">View</button>
 				</div>
 			}
+		
+			<div class="accounts-column">
+				@foreach (var account in Model.Accounts)
+				{
+					<div class="account">
+						<h5>@account.name</h5>
+					</div>
+				}
+			</div>
 		</div>
 		<p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 	</div>
