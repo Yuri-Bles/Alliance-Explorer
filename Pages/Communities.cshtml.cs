@@ -9,7 +9,7 @@ namespace Alliance_Explorer.Pages
         public List<Community> Communities { get; set; } = new List<Community>();
         public void Onget()
         {
-		    CommunityCollection communityCollection = new CommunityCollection();
+		    CommunityRepository communityCollection = new CommunityRepository();
 		    Communities = communityCollection.GetAllCommunities();
         }
 	}

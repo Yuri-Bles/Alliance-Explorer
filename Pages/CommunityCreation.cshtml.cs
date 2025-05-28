@@ -7,23 +7,19 @@ namespace Alliance_Explorer.Pages
 	public class CommunityCreationModel : PageModel
 	{
 		[BindProperty]
-		public string subject { get; set; } = string.Empty;
+		public string Subject { get; set; } = string.Empty;
 
 		[BindProperty]
-		public string language { get; set; } = string.Empty;
+		public string Language { get; set; } = string.Empty;
 
 		[BindProperty]
-		public string description { get; set; } = string.Empty;
+		public string Description { get; set; } = string.Empty;
 		public List<Community> Communities { get; set; } = new List<Community>();
-        public void Onget()
-        {
-			
-        }
 
         public void OnPostCreate()
         {
-	        CommunityCollection communityCollection = new CommunityCollection();
-			communityCollection.CreateCommunity(subject, language, description);
+	        CommunityRepository communityCollection = new CommunityRepository();
+			communityCollection.CreateCommunity(Subject, Language, Description);
         }
 	}
 }

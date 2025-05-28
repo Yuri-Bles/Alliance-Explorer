@@ -12,9 +12,9 @@ namespace Alliance_Explorer.Pages
 		[BindProperty(SupportsGet = true)]
 		public string? CommunitySubject { get; set; }
 
-		public Community? community { get; set; } = null;
+		public Community? Community { get; set; } = null;
 
-		private CommunityCollection communityCollection = new CommunityCollection();
+		private CommunityRepository CommunityCollection = new CommunityRepository();
 
 		public List<Alliance> Alliances { get; set; } = new List<Alliance>();
         public List<Account> Accounts { get; set; } = new List<Account>();
@@ -24,12 +24,12 @@ namespace Alliance_Explorer.Pages
 		{
 			if (SelectedCommunityId.HasValue)
 			{
-				this.community = communityCollection.FindCommunityByID(SelectedCommunityId.Value);
+				this.Community = CommunityCollection.FindCommunityByID(SelectedCommunityId.Value);
 
-				this.Alliances = community.GetAllAlliances();
-				this.CommunitySubject = community.subject;
+				this.Alliances = this.Community.GetAllAlliances();
+				this.CommunitySubject = this.Community.subject;
 
-				this.Accounts = community.GetAllAccounts();
+				this.Accounts = this.Community.GetAllAccounts();
 			}
 		}
 	}
