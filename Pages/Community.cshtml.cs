@@ -6,7 +6,7 @@ namespace Alliance_Explorer.Pages
 {
 	public class CommunityModel : PageModel
 	{
-		[BindProperty(SupportsGet = true)] 
+		[BindProperty(SupportsGet = true)]
 		public int? SelectedCommunityId { get; set; }
 
 		[BindProperty(SupportsGet = true)]

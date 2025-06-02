@@ -30,7 +30,7 @@
 		.accounts-column {
 			display: flex;
 			flex-direction: column;
-			gap: 15px; /* space between each account card */
+			gap: 15px;
 			grid-column: 3;
 			grid-row: 1;
 		}
@@ -40,6 +40,11 @@
 	<div class="text-center">
 		<h1 class="display-4">@Model.CommunitySubject</h1>
 		<div class="parent">
+			<form method="post">
+				<input type="hidden" asp-for="SelectedCommunityId" />
+				<a class="button" asp-page="/CommunitySettings" asp-route-SelectedCommunityId="@Model.SelectedCommunityId">Settings</a>
+			</form>
+
 			@foreach (var alliance in Model.Alliances)
 			{
 				<div class="alliance-card">
@@ -49,7 +54,7 @@
 					<button class="button">View</button>
 				</div>
 			}
-		
+
 			<div class="accounts-column">
 				@foreach (var account in Model.Accounts)
 				{

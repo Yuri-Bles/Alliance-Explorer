@@ -16,10 +16,11 @@ namespace Alliance_Explorer.Pages
 		public string Description { get; set; } = string.Empty;
 		public List<Community> Communities { get; set; } = new List<Community>();
 
-        public void OnPostCreate()
+        public IActionResult OnPostCreate()
         {
 	        CommunityRepository communityCollection = new CommunityRepository();
-			communityCollection.CreateCommunity(Subject, Language, Description);
-        }
+			communityCollection.CreateCommunity(false, Subject, Language, Description);
+			return RedirectToPage("Communities");
+		}
 	}
 }
