@@ -27,6 +27,14 @@
 			grid-column: 2;
 		}
 
+		.alliances-column {
+			grid-column: 2;
+			grid-row: 1;
+			display: flex;
+			flex-direction: column;
+			gap: 15px;
+		}
+
 		.accounts-column {
 			display: flex;
 			flex-direction: column;
@@ -44,22 +52,32 @@
 				<input type="hidden" asp-for="SelectedCommunityId" />
 				<a class="button" asp-page="/CommunitySettings" asp-route-SelectedCommunityId="@Model.SelectedCommunityId">Settings</a>
 			</form>
-
-			@foreach (var alliance in Model.Alliances)
-			{
-				<div class="alliance-card">
-					<h2>@alliance.name</h2>
-					<p><strong>Crewmembers:</strong> @alliance.GetCrewMembers().Count</p>
-					<p>@alliance.rules</p>
-					<button class="button">View</button>
-				</div>
-			}
-
+			
+			<div class="alliances-column">
+				@foreach (var alliance in Model.Alliances)
+				{
+					<div class="alliance-card">
+						<h2>@alliance.name</h2>
+						<p><strong>Crewmembers:</strong> @alliance.GetCrewMembers().Count</p>
+						<p>@alliance.rules</p>
+						<button class="button">View</button>
+					</div>
+				}
+			</div>
 			<div class="accounts-column">
-				@foreach (var account in Model.Accounts)
+				@foreach (var admin in Model.Admins)
+				{
+					<div class="admin">
+						<h4>@admin.name</h4>
+						<h5>@admin.age</h5>
+					</div>
+				}
+
+				@foreach (var account in Model.Members)
 				{
 					<div class="account">
-						<h5>@account.name</h5>
+						<h4>@account.name</h4>
+						<h5>@account.age</h5>
 					</div>
 				}
 			</div>

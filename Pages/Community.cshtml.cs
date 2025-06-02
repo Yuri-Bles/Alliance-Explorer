@@ -17,8 +17,9 @@ namespace Alliance_Explorer.Pages
 		private CommunityRepository CommunityCollection = new CommunityRepository();
 
 		public List<Alliance> Alliances { get; set; } = new List<Alliance>();
-        public List<Account> Accounts { get; set; } = new List<Account>();
-        
+        public List<Account> Admins { get; set; } = new List<Account>();
+        public List<Account> Members { get; set; } = new List<Account>();
+
 
 		public void OnGet()
 		{
@@ -29,7 +30,8 @@ namespace Alliance_Explorer.Pages
 				this.Alliances = this.Community.GetAllAlliances();
 				this.CommunitySubject = this.Community.subject;
 
-				this.Accounts = this.Community.GetAllAccounts();
+				this.Admins = this.Community.GetAdmins();
+				this.Members = this.Community.GetMembers();
 			}
 		}
 	}
