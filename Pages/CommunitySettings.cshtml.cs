@@ -1,3 +1,4 @@
+using ClassLibraryDAL;
 using ClassLibraryLogicLayer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -21,7 +22,7 @@ namespace Alliance_Explorer.Pages
 		[BindProperty(SupportsGet = true)]
 		public int SelectedCommunityId { get; set; }
 
-		private CommunityRepository communityRepository = new CommunityRepository();
+		private CommunityCollection communityCollection = new CommunityCollection(new CommunityRepository());
 
 		private Community community;
 
@@ -32,32 +33,32 @@ namespace Alliance_Explorer.Pages
 
 		public void OnPostChangeSubject()
 		{
-			community = communityRepository.FindCommunityByID(SelectedCommunityId);
-			communityRepository.UpdateString(community, "subject", Subject);
+			community = communityCollection.FindCommunityByID(SelectedCommunityId);
+			communityCollection.UpdateString(community, "subject", Subject);
 		}
 
 		public void OnPostChangeLanguage()
 		{
-			community = communityRepository.FindCommunityByID(SelectedCommunityId);
-			communityRepository.UpdateString(community, "language", Language);
+			community = communityCollection.FindCommunityByID(SelectedCommunityId);
+			communityCollection.UpdateString(community, "language", Language);
 		}
 
 		public void OnPostChangeDescription()
 		{
-			community = communityRepository.FindCommunityByID(SelectedCommunityId);
-			communityRepository.UpdateString(community, "description", Description);
+			community = communityCollection.FindCommunityByID(SelectedCommunityId);
+			communityCollection.UpdateString(community, "description", Description);
 		}
 
 		public void OnPostChangeRules()
 		{
-			community = communityRepository.FindCommunityByID(SelectedCommunityId);
-			communityRepository.UpdateString(community, "rules", Rules);
+			community = communityCollection.FindCommunityByID(SelectedCommunityId);
+			communityCollection.UpdateString(community, "rules", Rules);
 		}
 
 		public IActionResult OnPostDelete()
         {
-	        community = communityRepository.FindCommunityByID(SelectedCommunityId);
-			communityRepository.DeleteCommunityByID(community);
+	        community = communityCollection.FindCommunityByID(SelectedCommunityId);
+	        communityCollection.DeleteCommunityByID(community);
 			return RedirectToPage("Communities");
 		}
 	}

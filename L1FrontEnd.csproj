@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -16,9 +16,14 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ClassLibraryLogicLayer\L3LogicLayer.csproj" />
+    <ProjectReference Include="..\L6InterfacesDAL\L6InterfacesDAL.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Pages\AllianceCreation.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
     <Content Update="Pages\Community.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>

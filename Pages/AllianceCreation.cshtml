@@ -1,0 +1,100 @@
+﻿@page
+@model AllianceCreationModel
+@{
+    ViewData["Title"] = "Alliance Creation page";
+    var ageIsDisabled = !Model.AgeChecked;
+    var locationIsDisabled = !Model.OnLocation;
+}
+
+<head>
+	<link rel="stylesheet" href="~/css/site.css" />
+	<meta charset="UTF-8">
+	<title>Tickets Page</title>
+	<style>
+		
+    </style>
+</head>
+<body>
+	<div class="left-aligned">
+	<h1 class="display-4">Create an Alliance</h1>
+		
+	<form method="post">
+		<input type="hidden" asp-for="SelectedCommunityId" />
+		
+		<h5 class="display-8">* means required</h5>
+
+		<h3 class="display-8">Name*</h3>
+			<input class="quarter-textbox" type="text" id="name" name="name" asp-for="Name">
+
+		<h3 class="display-8">Language*</h3>
+			<input class="quarter-textbox" type="text" id="language" name="language" asp-for="Language">
+
+		<h3 class="display-8">Rules</h3>
+			<textarea class="textbox" type="text" id="rules" name="rules" asp-for="Rules"></textarea>
+
+		<h3 class="display-8">Age Range</h3>
+		<label>
+			<input type="checkbox" asp-for="AgeChecked" id="ageChecked"/> Have age range
+		</label>
+		<br/>
+		<label>
+			<input type="checkbox" asp-for="AgeIsForced" id="ageIsForced" disabled="@ageIsDisabled"/> Force age requirement
+		</label>
+		<br/>
+			<input class="half-textbox" asp-for="MinimumAge" id="minAge" value=0 disabled="@ageIsDisabled"/>
+			<input class="half-textbox" asp-for="MaximumAge" id="maxAge" value=0 disabled="@ageIsDisabled"/>
+		<br/>
+
+		<h3 class="display-8">Online, in person, or both?*</h3>
+		<label>
+			<input type="checkbox" asp-for="Online" id="online"/> Online
+		</label>
+		<br/>
+		<label>
+			<input type="checkbox" asp-for="OnLocation" id="onLocation"/> In person
+		</label>
+		<br/>
+
+		<h3 class="display-8">Latitude and longitude of meetup location (required if in person is selected)</h3>
+		<input class="textbox" type="number" step="any" id="latitude" name="latitude" asp-for="Latitude" disabled="@locationIsDisabled"> Latitude
+		<input class="textbox" type="number" step="any" id="longitude" name="longitude" asp-for="Longitude" disabled="@locationIsDisabled"> Longitude
+		<br/>
+
+		<h3 class="display-8">Are crewmembers allowed to add events?</h3>
+		<label>
+			<input type="checkbox" asp-for="AllowCrewmemberEvents" id="allowCrewmemberEvents"/> Allow Crewmember Events
+		</label>
+		<br/>
+		
+		@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+		{
+			<p id="error" class="error">@Model.ErrorMessage</p>
+		}
+		<button class="button" asp-area="" asp-page-handler="Create">Create</button>
+	</form>
+	<p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+</body>
+<script>
+	const ageCheckbox = document.getElementById("ageChecked");
+	const forceAgeCheckbox = document.getElementById("ageIsForced");
+	const minAgeInput = document.getElementById("minAge");
+	const maxAgeInput = document.getElementById("maxAge");
+
+	ageCheckbox.addEventListener("change", () => {
+		const enabled = ageCheckbox.checked;
+		forceAgeCheckbox.disabled = !enabled;
+		minAgeInput.disabled = !enabled;
+		maxAgeInput.disabled = !enabled;
+	});
+
+	const onLocationCheckbox = document.getElementById("onLocation");
+	const latitudeInput = document.getElementById("latitude");
+	const longitudeInput = document.getElementById("longitude");
+
+	onLocationCheckbox.addEventListener("change", () => {
+		const enabled = onLocationCheckbox.checked;
+		latitudeInput.disabled = !enabled;
+		longitudeInput.disabled = !enabled;
+	});
+</script>

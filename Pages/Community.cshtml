@@ -27,6 +27,18 @@
 			grid-column: 2;
 		}
 
+		.first-column {
+			grid-column: 1;
+			grid-row: 1;
+			display: flex;
+			flex-direction: column;
+			gap: 15px;
+		}
+
+			.first-column form {
+				margin-bottom: 10px;
+			}
+
 		.alliances-column {
 			grid-column: 2;
 			grid-row: 1;
@@ -48,11 +60,15 @@
 	<div class="text-center">
 		<h1 class="display-4">@Model.CommunitySubject</h1>
 		<div class="parent">
-			<form method="post">
-				<input type="hidden" asp-for="SelectedCommunityId" />
-				<a class="button" asp-page="/CommunitySettings" asp-route-SelectedCommunityId="@Model.SelectedCommunityId">Settings</a>
-			</form>
-			
+			<div class="first-column">
+				<form method="post">
+					<input type="hidden" asp-for="SelectedCommunityId"/>
+					<a class="button" asp-page="/CommunitySettings" asp-route-SelectedCommunityId="@Model.SelectedCommunityId">Settings</a>
+					
+					<a class="button" asp-page="/AllianceCreation" asp-route-SelectedCommunityId="@Model.SelectedCommunityId">+</a>
+				</form>
+			</div>
+
 			<div class="alliances-column">
 				@foreach (var alliance in Model.Alliances)
 				{
@@ -68,8 +84,8 @@
 				@foreach (var admin in Model.Admins)
 				{
 					<div class="admin">
-						<h4>@admin.name</h4>
-						<h5>@admin.age</h5>
+						<h4>Admin: @admin.name</h4>
+						<h5>Age: @admin.age</h5>
 					</div>
 				}
 
@@ -77,7 +93,7 @@
 				{
 					<div class="account">
 						<h4>@account.name</h4>
-						<h5>@account.age</h5>
+						<h5>Age: @account.age</h5>
 					</div>
 				}
 			</div>

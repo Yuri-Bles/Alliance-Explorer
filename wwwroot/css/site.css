@@ -23,18 +23,22 @@ body {
 }
 
 .button {
+    display: inline-block;
     background-color: #233F80;
     color: white;
     border: none;
     padding: 10px 20px;
+    margin: 20px 20px;
     border-radius: 20px;
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
+    text-decoration: none;
 }
 
     .button:hover {
         background-color: #2C4FA0;
+        color: #16FFE7;
     }
 
 .textbox {
@@ -47,6 +51,40 @@ body {
     width: 80%;
     transition: border-color 0.3s;
 }
+
+    .textbox:disabled {
+        background-color: #BAFFF8;
+    }
+
+.half-textbox {
+    padding: 10px;
+    background-color: #99FFF5;
+    border-color: #000000;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    width: 40%;
+    transition: border-color 0.3s;
+}
+
+    .half-textbox:disabled {
+    background-color: #BAFFF8;
+    }
+
+.quarter-textbox {
+    padding: 10px;
+    background-color: #99FFF5;
+    border-color: #000000;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    width: 20%;
+    transition: border-color 0.3s;
+}
+
+    .quarter-textbox:disabled {
+        background-color: #BAFFF8;
+    }
 
 .account {
     color: #000000;
@@ -66,4 +104,10 @@ body {
     padding: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+    font-size: 14px;
 }

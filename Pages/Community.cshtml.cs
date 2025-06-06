@@ -1,3 +1,4 @@
+using ClassLibraryDAL;
 using ClassLibraryLogicLayer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -14,7 +15,7 @@ namespace Alliance_Explorer.Pages
 
 		public Community? Community { get; set; } = null;
 
-		private CommunityRepository CommunityCollection = new CommunityRepository();
+		private CommunityCollection CommunityCollection = new CommunityCollection(new CommunityRepository());
 
 		public List<Alliance> Alliances { get; set; } = new List<Alliance>();
         public List<Account> Admins { get; set; } = new List<Account>();
