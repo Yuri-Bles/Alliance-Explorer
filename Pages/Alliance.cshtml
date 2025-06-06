@@ -1,5 +1,5 @@
 ﻿@page
-@model CommunityModel
+@model AllianceModel
 @{
 	ViewData["Title"] = "Community page";
 }
@@ -17,7 +17,7 @@
 			grid-row-gap: 15px;
 		}
 
-		.alliance-card {
+		.event-card {
 			overflow-y: auto;
 			background-color: #99FFF5;
 			padding: 20px;
@@ -39,7 +39,7 @@
 				margin-bottom: 10px;
 			}
 
-		.alliances-column {
+		.events-column {
 			grid-column: 2;
 			grid-row: 1;
 			display: flex;
@@ -58,45 +58,34 @@
 </head>
 <body>
 	<div class="text-center">
-		<h1 class="display-4">@Model.CommunitySubject</h1>
+		<h1 class="display-4">@Model.Name</h1>
 		<div class="parent">
 			<div class="first-column">
 				<form method="post">
-					<input type="hidden" asp-for="SelectedCommunityId"/>
-					<a class="button" asp-page="/CommunitySettings" asp-route-SelectedCommunityId="@Model.SelectedCommunityId">Settings</a>
+					<input type="hidden" asp-for="SelectedAllianceId"/>
+					<a class="button" asp-page="/CommunitySettings" asp-route-SelectedCommunityId="@Model.SelectedAllianceId">Settings</a>
 					
-					<a class="button" asp-page="/AllianceCreation" asp-route-SelectedCommunityId="@Model.SelectedCommunityId">+</a>
+					<a class="button" asp-page="/AllianceCreation" asp-route-SelectedCommunityId="@Model.SelectedAllianceId">+</a>
 				</form>
 			</div>
 
-			<div class="alliances-column">
-				@foreach (var alliance in Model.Alliances)
-				{
-					<div class="alliance-card">
-						<h2>@alliance.name</h2>
-						<p><strong>Crewmembers:</strong> @alliance.GetMemberCount()</p>
-						<p>@alliance.rules</p>
-						<form method="post" asp-page="/Alliance">
-							<input type="hidden" name="allianceId" value="@alliance.GetID()" />
-							<a class="button" asp-page="/Alliance" asp-route-SelectedAllianceId="@alliance.GetID()" asp-route-SelectedCommunityId="@Model.Community.ID">View</a>
-						</form>
-					</div>
-				}
+			<div class="events-column">
+				
 			</div>
 			<div class="accounts-column">
-				@foreach (var admin in Model.Admins)
+				@foreach (var captain in Model.Captains)
 				{
 					<div class="admin">
-						<h4>Admin: @admin.name</h4>
-						<h5>Age: @admin.age</h5>
+						<h4>Captain: @captain.name</h4>
+						<h5>Age: @captain.age</h5>
 					</div>
 				}
 
-				@foreach (var account in Model.Members)
+				@foreach (var crewmember in Model.Crewmembers)
 				{
 					<div class="account">
-						<h4>@account.name</h4>
-						<h5>Age: @account.age</h5>
+						<h4>@crewmember.name</h4>
+						<h5>Age: @crewmember.age</h5>
 					</div>
 				}
 			</div>
