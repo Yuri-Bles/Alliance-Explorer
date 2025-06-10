@@ -62,10 +62,9 @@
 		<div class="parent">
 			<div class="first-column">
 				<form method="post">
+					<input type="hidden" asp-for="SelectedCommunityId" />
 					<input type="hidden" asp-for="SelectedAllianceId"/>
-					<a class="button" asp-page="/CommunitySettings" asp-route-SelectedCommunityId="@Model.SelectedAllianceId">Settings</a>
-					
-					<a class="button" asp-page="/AllianceCreation" asp-route-SelectedCommunityId="@Model.SelectedAllianceId">+</a>
+					<a class="button" asp-page="/AllianceSettings" asp-route-SelectedCommunityId="@Model.SelectedCommunityId" asp-route-SelectedAllianceId="@Model.SelectedAllianceId">Settings</a>
 				</form>
 			</div>
 

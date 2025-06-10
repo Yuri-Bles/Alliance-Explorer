@@ -1,3 +1,4 @@
+using System.Dynamic;
 using ClassLibraryDAL;
 using ClassLibraryLogicLayer;
 using Microsoft.AspNetCore.Mvc;
@@ -5,9 +6,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Alliance_Explorer.Pages
 {
-	public class AllianceCreationModel : PageModel
+	public class AllianceSettingsModel : PageModel
 	{
 		[BindProperty(SupportsGet = true)] public int? SelectedCommunityId { get; set; }
+		[BindProperty(SupportsGet = true)] public int SelectedAllianceId { get; set; }
 		[BindProperty] public string Name { get; set; } = string.Empty;
 		[BindProperty] public string Language { get; set; } = string.Empty;
 		[BindProperty] public string Rules { get; set; } = string.Empty;
@@ -26,23 +28,51 @@ namespace Alliance_Explorer.Pages
 
 		private CommunityCollection CommunityCollection = new CommunityCollection(new CommunityRepository());
 		public Community? Community { get; set; } = null;
+		public Alliance? Alliance { get; set; } = null;
 
-		public IActionResult OnPostCreate()
+		public void OnGet()
+		{
+			Community = CommunityCollection.FindCommunityByID(this.SelectedCommunityId!.Value);
+			Alliance = Community.GetAllianceByID(this.SelectedAllianceId);
+
+			Name = Alliance.name;
+			Language = Alliance.language;
+			Rules = Alliance.rules;
+			AgeIsForced = Alliance.ageIsForced;
+			MinimumAge = Alliance.minimumAge;
+			MaximumAge = Alliance.maximumAge;
+			Online = Alliance.isOnline;
+			OnLocation = Alliance.isOnLocation;
+			Latitude = Alliance.latitude;
+			Longitude = Alliance.longitude;
+			AllowCrewmemberEvents = Alliance.allowCrewmemberEvents;
+
+			if (MinimumAge != null || MaximumAge != null)
+			{
+				AgeChecked = true;
+			}
+			else
+			{
+				AgeChecked = false;
+			}
+		}
+
+		public IActionResult OnPostChange()
 		{
 			if (SelectedCommunityId.HasValue)
 			{
 				this.Community = CommunityCollection.FindCommunityByID(SelectedCommunityId.Value);
-				Alliance alliance = new Alliance(-1, this.Name, this.MinimumAge, this.MaximumAge, this.Language, this.Latitude, this.Longitude, this.Rules, this.AgeIsForced, this.OnLocation, this.Online, this.AllowCrewmemberEvents);
+				Alliance alliance = new Alliance(this.SelectedAllianceId, this.Name, this.MinimumAge, this.MaximumAge, this.Language, this.Latitude, this.Longitude, this.Rules, this.AgeIsForced, this.OnLocation, this.Online, this.AllowCrewmemberEvents);
 
 				if (alliance.name != null && alliance.language != null && alliance.ageIsForced != null && alliance.isOnline != null && alliance.isOnLocation != null && alliance.allowCrewmemberEvents != null)
 				{
 					if (alliance.isOnLocation || alliance.isOnline)
 					{
-						if ((AgeChecked && MinimumAge <= MaximumAge) || !AgeChecked)
+						if (AgeChecked && MinimumAge <= MaximumAge)
 						{
 							if ((alliance.isOnLocation && alliance.latitude != null && alliance.longitude != null) || !alliance.isOnLocation)
 							{
-								this.Community.CreateAlliance(alliance, this.AgeChecked);
+								this.Alliance.ChangeSettings(alliance, this.AgeChecked);
 								return RedirectToPage("Community", new { SelectedCommunityId = this.SelectedCommunityId });
 							}
 							else
@@ -74,6 +104,14 @@ namespace Alliance_Explorer.Pages
 				ErrorMessage = "No community selected.";
 				return Page();
 			}
+		}
+
+		public IActionResult OnPostDelete()
+		{
+			Community = CommunityCollection.FindCommunityByID(this.SelectedCommunityId!.Value);
+			Alliance = Community.GetAllianceByID(SelectedAllianceId);
+			Alliance.Delete();
+			return RedirectToPage("Community", new { SelectedCommunityId = this.SelectedCommunityId });
 		}
 	}
 }
