@@ -1,10 +1,12 @@
 using ClassLibraryDAL;
 using ClassLibraryLogicLayer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Alliance_Explorer.Pages
 {
+	[Authorize]
 	public class CommunityModel : PageModel
 	{
 		[BindProperty(SupportsGet = true)]

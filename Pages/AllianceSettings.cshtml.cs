@@ -1,18 +1,20 @@
 using System.Dynamic;
 using ClassLibraryDAL;
 using ClassLibraryLogicLayer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Alliance_Explorer.Pages
 {
+	[Authorize]
 	public class AllianceSettingsModel : PageModel
 	{
 		[BindProperty(SupportsGet = true)] public int? SelectedCommunityId { get; set; }
 		[BindProperty(SupportsGet = true)] public int SelectedAllianceId { get; set; }
 		[BindProperty] public string Name { get; set; } = string.Empty;
 		[BindProperty] public string Language { get; set; } = string.Empty;
-		[BindProperty] public string Rules { get; set; } = string.Empty;
+		[BindProperty] public string? Rules { get; set; } = string.Empty;
 		[BindProperty] public bool AgeChecked { get; set; } = false;
 		[BindProperty] public bool AgeIsForced { get; set; } = false;
 		[BindProperty] public int? MinimumAge { get; set; } = null;

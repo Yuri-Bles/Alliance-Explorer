@@ -111,3 +111,15 @@ body {
     font-weight: bold;
     font-size: 14px;
 }
+
+.link {
+    color: blue;
+    background-color: #D6FFFB;
+    border-color: #D6FFFB;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+    .link:hover {
+        color: lightskyblue;
+    }
