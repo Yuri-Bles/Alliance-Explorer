@@ -16,8 +16,6 @@ namespace Alliance_Explorer.Pages
 
 		AccountCollection accountCollection = new AccountCollection(new AccountRepository());
 
-		public bool isLoggedIn = false;
-
         public async Task<IActionResult> OnGet()
         {
             if (User.Identity.IsAuthenticated)
@@ -53,6 +51,11 @@ namespace Alliance_Explorer.Pages
 			{
 				return Page();
 			}
+		}
+
+		public IActionResult OnPostSignUp()
+		{
+			return RedirectToPage("/AccountCreation");
 		}
 	}
 }

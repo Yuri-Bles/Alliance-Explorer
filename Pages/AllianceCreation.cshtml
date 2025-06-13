@@ -41,8 +41,8 @@
 			<input type="checkbox" asp-for="AgeIsForced" id="ageIsForced" disabled="@ageIsDisabled"/> Force age requirement
 		</label>
 		<br/>
-			<input class="half-textbox" asp-for="MinimumAge" id="minAge" value=0 disabled="@ageIsDisabled"/>
-			<input class="half-textbox" asp-for="MaximumAge" id="maxAge" value=0 disabled="@ageIsDisabled"/>
+			<input class="quarter-textbox" asp-for="MinimumAge" id="minAge" value=0 disabled="@ageIsDisabled"/>
+			<input class="quarter-textbox" asp-for="MaximumAge" id="maxAge" value=0 disabled="@ageIsDisabled" />
 		<br/>
 
 		<h3 class="display-8">Online, in person, or both?*</h3>
@@ -56,8 +56,8 @@
 		<br/>
 
 		<h3 class="display-8">Latitude and longitude of meetup location (required if in person is selected)</h3>
-		<input class="textbox" type="number" step="any" id="latitude" name="latitude" asp-for="Latitude" disabled="@locationIsDisabled"> Latitude
-		<input class="textbox" type="number" step="any" id="longitude" name="longitude" asp-for="Longitude" disabled="@locationIsDisabled"> Longitude
+			<input class="quarter-textbox" type="number" step="any" id="latitude" name="latitude" asp-for="Latitude" disabled="@locationIsDisabled"> Latitude
+			<input class="quarter-textbox" type="number" step="any" id="longitude" name="longitude" asp-for="Longitude" disabled="@locationIsDisabled"> Longitude
 		<br/>
 
 		<h3 class="display-8">Are crewmembers allowed to add events?</h3>

@@ -1,0 +1,45 @@
+﻿@page
+@model AccountCreationModel
+@{
+    ViewData["Title"] = "Create Account Page";
+}
+
+<div class="left-aligned">
+	<form method="post">
+		<h2>Creating an account</h2>
+		<p>All fields are required</p>
+
+		<h3 class="display-8">Name</h3>
+		<input type="text" class="quarter-textbox" id="name" asp-for="Name"/>
+
+		<h3 class="display-8">Password</h3>
+		<input type="password" class="quarter-textbox" id="password" asp-for="Password" />
+
+		<h3 class="display-8">E-mail</h3>
+		<input type="text" class="half-textbox" id="email" asp-for="Email"/>
+
+		<h3 for="display-8">Birthday</h3>
+		<input type="date" class="quarter-textbox" id="birthday" asp-for="Birthday"/>
+
+		<h3 class="display-8">What are your latitude and longitude?</h3>
+		<p>This will only be used to find Alliances near you and won't be shared with anyone else.</p>
+		Latitude: 
+		<br/>
+		<input class="quarter-textbox" type="number" step="any" id="latitude" name="latitude" asp-for="Latitude">
+		<br/>
+		Longitude: 
+		<br/>
+		<input class="quarter-textbox" type="number" step="any" id="longitude" name="longitude" asp-for="Longitude">
+
+		<h3>What is the maximum distance you are willing to travel?</h3>
+		<input class="quarter-textbox" asp-for="MaxDistance" id="maxDistance" value=0/> Km
+		
+		@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+		{
+			<p id="error" class="error">@Model.ErrorMessage</p>
+		}
+
+		<br/>
+		<button class="button" asp-area="" asp-page-handler="SignUp">Sign Up</button>
+	</form>
+</div>
