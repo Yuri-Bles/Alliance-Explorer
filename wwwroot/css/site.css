@@ -41,6 +41,17 @@ body {
         color: #16FFE7;
     }
 
+    .button:disabled {
+        background-color: #D6E2FF;
+        color: black;
+    }
+
+        .button:disabled:hover {
+            background-color: #D6E2FF;
+            color: black;
+            cursor: not-allowed;
+        }
+
 .textbox {
     padding: 10px;
     background-color: #99FFF5;
