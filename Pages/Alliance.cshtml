@@ -2,6 +2,7 @@
 @model AllianceModel
 @{
 	ViewData["Title"] = "Community page";
+	var joined = Model.Joined;
 }
 
 <head>
@@ -65,6 +66,7 @@
 					<input type="hidden" asp-for="SelectedCommunityId" />
 					<input type="hidden" asp-for="SelectedAllianceId"/>
 					<a class="button" asp-page="/AllianceSettings" asp-route-SelectedCommunityId="@Model.SelectedCommunityId" asp-route-SelectedAllianceId="@Model.SelectedAllianceId">Settings</a>
+					<button class="button" asp-page="/Alliance" asp-route-SelectedCommunityId="@Model.SelectedCommunityId" asp-page-handler="Join" disabled="@joined">Join</button>
 				</form>
 			</div>
 
