@@ -72,5 +72,16 @@ namespace Alliance_Explorer.Pages
 
 			return RedirectToPage(new { SelectedCommunityId = SelectedCommunityId, SelectedAllianceId = SelectedAllianceId });
 		}
+
+		public IActionResult OnPostLeave()
+		{
+			this.Community = communityCollection.FindCommunityByID(SelectedCommunityId);
+			this.Alliance = this.Community.GetAllianceByID(SelectedAllianceId.Value);
+			this.currentAccount = AccountCollection.GetAccountByName(User.Identity.Name);
+
+			this.Alliance.AccountLeavesAlliance(currentAccount);
+
+			return RedirectToPage(new { SelectedCommunityId = SelectedCommunityId, SelectedAllianceId = SelectedAllianceId });
+		}
 	}
 }
