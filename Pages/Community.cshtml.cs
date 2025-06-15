@@ -38,6 +38,7 @@ namespace Alliance_Explorer.Pages
 			{
 				this.Community = CommunityCollection.FindCommunityByID(SelectedCommunityId.Value);
 
+				this.Alliances.Clear();
 				this.Alliances = this.Community.GetAllAlliances();
 				this.CommunitySubject = this.Community.subject;
 
@@ -55,6 +56,16 @@ namespace Alliance_Explorer.Pages
 			this.currentAccount = AccountCollection.GetAccountByName(User.Identity.Name);
 
 			this.Community.AccountJoinsCommunity(currentAccount);
+
+			return RedirectToPage(new { SelectedCommunityId = SelectedCommunityId });
+		}
+
+		public IActionResult OnPostLeave()
+		{
+			this.Community = CommunityCollection.FindCommunityByID(SelectedCommunityId.Value);
+			this.currentAccount = AccountCollection.GetAccountByName(User.Identity.Name);
+
+			this.Community.AccountLeavesCommunity(currentAccount);
 
 			return RedirectToPage(new { SelectedCommunityId = SelectedCommunityId });
 		}
