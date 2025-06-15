@@ -1,5 +1,7 @@
 using ClassLibraryDAL;
 using ClassLibraryLogicLayer;
+using L3LogicLayer;
+using L5DAL;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -27,7 +29,10 @@ namespace Alliance_Explorer.Pages
 
 
 		private CommunityCollection CommunityCollection = new CommunityCollection(new CommunityRepository());
+		private AccountCollection AccountCollection = new AccountCollection(new AccountRepository());
+
 		public Community? Community { get; set; } = null;
+		private Account currentAccount = null;
 
 		public IActionResult OnPostCreate()
 		{
@@ -44,7 +49,8 @@ namespace Alliance_Explorer.Pages
 						{
 							if (alliance is { isOnLocation: true, latitude: not null, longitude: not null } || !alliance.isOnLocation)
 							{
-								this.Community.CreateAlliance(alliance, this.AgeChecked);
+								this.currentAccount = AccountCollection.GetAccountByName(User.Identity.Name);
+								this.Community.CreateAlliance(this.currentAccount, alliance, this.AgeChecked);
 								return RedirectToPage("Community", new { SelectedCommunityId = this.SelectedCommunityId });
 							}
 							else

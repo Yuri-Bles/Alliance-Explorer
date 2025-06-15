@@ -68,7 +68,7 @@ namespace Alliance_Explorer.Pages
 			this.Alliance = this.Community.GetAllianceByID(SelectedAllianceId.Value);
 			this.currentAccount = AccountCollection.GetAccountByName(User.Identity.Name);
 
-			this.Alliance.AccountJoinsAlliance(currentAccount);
+			this.Alliance.AccountJoinsAlliance(currentAccount, false);
 
 			return RedirectToPage(new { SelectedCommunityId = SelectedCommunityId, SelectedAllianceId = SelectedAllianceId });
 		}
