@@ -55,7 +55,7 @@ namespace Alliance_Explorer.Pages
 			this.Community = CommunityCollection.FindCommunityByID(SelectedCommunityId.Value);
 			this.currentAccount = AccountCollection.GetAccountByName(User.Identity.Name);
 
-			this.Community.AccountJoinsCommunity(currentAccount);
+			this.Community.AccountJoinsCommunity(currentAccount, false);
 
 			return RedirectToPage(new { SelectedCommunityId = SelectedCommunityId });
 		}
