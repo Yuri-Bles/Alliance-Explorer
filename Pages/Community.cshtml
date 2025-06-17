@@ -3,7 +3,7 @@
 @{
 	ViewData["Title"] = "Community page";
 	var joined = Model.Joined;
-	var hasJoined = !Model.Joined;
+	var notJoined = !Model.Joined;
 }
 
 <head>
@@ -68,7 +68,7 @@
 					<a class="button" asp-page="/CommunitySettings" asp-route-SelectedCommunityId="@Model.SelectedCommunityId">Settings</a>
 					<a class="button" asp-page="/AllianceCreation" asp-route-SelectedCommunityId="@Model.SelectedCommunityId">+</a>
 					<button class="button" asp-page="/Community" asp-route-SelectedCommunityId="@Model.SelectedCommunityId" asp-page-handler="Join" disabled="@joined">Join</button>
-					<button class="button" asp-page="/Community" asp-route-SelectedCommunityId="@Model.SelectedCommunityId" asp-page-handler="Leave" disabled="@hasJoined">Leave</button>
+					<button class="button" asp-page="/Community" asp-route-SelectedCommunityId="@Model.SelectedCommunityId" asp-page-handler="Leave" disabled="@notJoined">Leave</button>
 				</form>
 			</div>
 
