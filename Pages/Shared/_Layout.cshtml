@@ -9,73 +9,78 @@
     <link rel="stylesheet" href="~/Alliance_Explorer.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-	            <span class="navbar-brand">Alliance Explorer</span>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-	                @{
-		                var path = Context.Request.Path.Value?.ToLower();
-	                }
+	<div class="d-flex flex-column min-vh-100">
+<header>
+	<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+		<div class="container">
+			<span class="navbar-brand">Alliance Explorer</span>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+			        aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+				@{
+					var path = Context.Request.Path.Value?.ToLower();
+				}
 
-	                <ul class="navbar-nav flex-grow-1">
-		                @if (!User.Identity.IsAuthenticated && path == "/privacy")
-		                {
-			                <li class="nav-item">
-				                <a class="nav-link text-dark" asp-area="" asp-page="/Index">Log in</a>
-			                </li>
-		                }
-		                else if (path != "/" && path != "/index")
-		                {
-		                <li class="nav-item">
-			                <a class="nav-link text-dark" asp-area="" asp-page="/Index">Log out</a>
-		                </li>
-		                }
+				<ul class="navbar-nav flex-grow-1">
+					@if (path != "/error")
+					{
+						@if (!User.Identity.IsAuthenticated && path == "/privacy")
+						{
+							<li class="nav-item">
+								<a class="nav-link text-dark" asp-area="" asp-page="/Index">Log in</a>
+							</li>
+						}
+						else if (path != "/" && path != "/index")
+						{
+							<li class="nav-item">
+								<a class="nav-link text-dark" asp-area="" asp-page="/Index">Log out</a>
+							</li>
+						}
 
-		                <li class="nav-item">
-			                <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-		                </li>
+						<li class="nav-item">
+							<a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+						</li>
 
-		                @if (User.Identity.IsAuthenticated && path != "/" && path != "/index")
-		                {
-			                <li class="nav-item">
-				                <a class="nav-link text-dark" asp-area="" asp-page="/Communities">Communities</a>
-			                </li>
-		                }
-	                </ul>
-					
-	                @if (User.Identity.IsAuthenticated)
-	                {
-		                <ul class="navbar-nav">
-			                <li class="nav-item">
-				                <span class="nav-link text-dark">@User.Identity.Name</span>
-			                </li>
-		                </ul>
-	                }
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+						@if (User.Identity.IsAuthenticated && path != "/" && path != "/index")
+						{
+							<li class="nav-item">
+								<a class="nav-link text-dark" asp-area="" asp-page="/Communities">Communities</a>
+							</li>
+						}
+					}
+				</ul>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - Alliance_Explorer - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
+				@if (User.Identity.IsAuthenticated)
+				{
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<span class="nav-link text-dark">@User.Identity.Name</span>
+						</li>
+					</ul>
+				}
+			</div>
+		</div>
+	</nav>
+</header>
+<main role="main" class="flex-fill">
+	<div class="container pb-3">
+		@RenderBody()
+	</div>
+</main>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+	<footer class="border-top footer text-muted">
+		<div class="container">
+			&copy; 2025 - Alliance_Explorer - <a asp-area="" asp-page="/Privacy">Privacy</a>
+		</div>
+	</footer>
+	</div>
 
-    @await RenderSectionAsync("Scripts", required: false)
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+
+@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

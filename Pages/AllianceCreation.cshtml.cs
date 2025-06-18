@@ -1,5 +1,3 @@
-using ClassLibraryDAL;
-using ClassLibraryLogicLayer;
 using L3LogicLayer;
 using L5DAL;
 using Microsoft.AspNetCore.Authorization;
@@ -25,32 +23,36 @@ namespace Alliance_Explorer.Pages
 		[BindProperty] public double? Longitude { get; set; } = null;
 		[BindProperty] public bool AllowCrewmemberEvents { get; set; } = false;
 
-		[BindProperty] public string ErrorMessage { get; set; } = null;
+		[BindProperty] public string? ErrorMessage { get; set; }
 
 
-		private CommunityCollection CommunityCollection = new CommunityCollection(new CommunityRepository());
-		private AccountCollection AccountCollection = new AccountCollection(new AccountRepository());
+		private CommunityCollection? _communityCollection;
+		private AccountCollection? _accountCollection;
 
 		public Community? Community { get; set; } = null;
-		private Account currentAccount = null;
+		private Account? _currentAccount = null;
 
 		public IActionResult OnPostCreate()
 		{
+			_communityCollection = new CommunityCollection(new CommunityRepository());
+			_accountCollection = new AccountCollection(new AccountRepository());
+
+
 			if (SelectedCommunityId.HasValue)
 			{
-				this.Community = CommunityCollection.FindCommunityByID(SelectedCommunityId.Value);
+				this.Community = _communityCollection.FindCommunityById(SelectedCommunityId.Value);
 				Alliance alliance = new Alliance(-1, this.Name, this.MinimumAge, this.MaximumAge, this.Language, this.Latitude, this.Longitude, this.Rules, this.AgeIsForced, this.OnLocation, this.Online, this.AllowCrewmemberEvents);
 
-				if (alliance.name != "" && alliance.language != null && alliance.ageIsForced != null && alliance.isOnline != null && alliance.isOnLocation != null && alliance.allowCrewmemberEvents != null)
+				if (alliance.Name != "" && alliance.Language != "")
 				{
-					if (alliance.isOnLocation || alliance.isOnline)
+					if (alliance.IsOnLocation || alliance.IsOnline)
 					{
 						if ((AgeChecked && MinimumAge <= MaximumAge) || !AgeChecked)
 						{
-							if (alliance is { isOnLocation: true, latitude: not null, longitude: not null } || !alliance.isOnLocation)
+							if (alliance is { IsOnLocation: true, Latitude: not null, Longitude: not null } || !alliance.IsOnLocation)
 							{
-								this.currentAccount = AccountCollection.GetAccountByName(User.Identity.Name);
-								this.Community.CreateAlliance(this.currentAccount, alliance, this.AgeChecked);
+								this._currentAccount = _accountCollection.GetAccountByName(User.Identity!.Name!);
+								this.Community.CreateAlliance(this._currentAccount, alliance, this.AgeChecked);
 								return RedirectToPage("Community", new { SelectedCommunityId = this.SelectedCommunityId });
 							}
 							else

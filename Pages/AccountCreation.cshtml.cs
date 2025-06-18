@@ -1,13 +1,9 @@
-using System.Security.Claims;
 using L3LogicLayer;
 using L5DAL;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Identity.Client;
 
-namespace Alliance_Explorer.Pages
+namespace L1FrontEnd.Pages
 {
 	public class AccountCreationModel : PageModel
 	{
@@ -20,19 +16,23 @@ namespace Alliance_Explorer.Pages
 		[BindProperty] public int MaxDistance { get; set; }
 		[BindProperty] public string? ErrorMessage { get; set; } = string.Empty;
 
-		AccountCollection accountCollection = new AccountCollection(new AccountRepository());
+		private AccountCollection? _accountCollection;
 
-		public void OnGet()
+		public IActionResult OnGet()
 		{
 			Birthday = DateOnly.FromDateTime(DateTime.Today);
+
+			return Page();
 		}
 
 		public IActionResult OnPostSignUp()
 		{
-			this.ErrorMessage = accountCollection.SignInCheck(Name, Password, Email, Birthday, Latitude, Longitude);
+			_accountCollection = new AccountCollection(new AccountRepository());
+
+			this.ErrorMessage = _accountCollection.SignInCheck(Name, Password, Email, Birthday, Latitude, Longitude);
 			if (this.ErrorMessage == null)
 			{
-				accountCollection.CreateAccount(Name, Password, Email, Birthday, Latitude, Longitude, MaxDistance);
+				_accountCollection.CreateAccount(Name, Password, Email, Birthday, Latitude, Longitude, MaxDistance);
 				return RedirectToPage("/index");
 			}
 			else

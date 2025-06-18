@@ -1,5 +1,3 @@
-using ClassLibraryDAL;
-using ClassLibraryLogicLayer;
 using L3LogicLayer;
 using L5DAL;
 using Microsoft.AspNetCore.Authorization;
@@ -21,20 +19,22 @@ namespace Alliance_Explorer.Pages
 		public string Description { get; set; } = string.Empty;
 
 		[BindProperty] public string? ErrorMessage { get; set; } = string.Empty;
-		public List<Community> Communities { get; set; } = new List<Community>();
-		private Account currentAccount = null;
+		private Account? _currentAccount = null;
 
-		private CommunityCollection CommunityCollection = new CommunityCollection(new CommunityRepository());
-		private AccountCollection AccountCollection = new AccountCollection(new AccountRepository());
+		private CommunityCollection _communityCollection;
+		private AccountCollection _accountCollection;
 
 		public IActionResult OnPostCreate()
-        {
-	        this.ErrorMessage = CommunityCollection.CreateCheck(this.Subject, this.Language, this.Description);
+		{
+			_communityCollection = new CommunityCollection(new CommunityRepository());
+			_accountCollection = new AccountCollection(new AccountRepository());
+
+	        this.ErrorMessage = _communityCollection.CreateCheck(this.Subject, this.Language, this.Description);
 
 	        if (this.ErrorMessage == null)
 	        {
-				this.currentAccount = AccountCollection.GetAccountByName(User.Identity.Name);
-				CommunityCollection.CreateCommunity(Subject, Language, Description, this.currentAccount, new CommunityDAL());
+				this._currentAccount = _accountCollection.GetAccountByName(User.Identity.Name);
+				_communityCollection.CreateCommunity(Subject, Language, Description, this._currentAccount, new CommunityDal());
 				return RedirectToPage("Communities");
 			}
 	        else

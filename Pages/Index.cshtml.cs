@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Identity.Client;
 
 namespace Alliance_Explorer.Pages
 {
@@ -14,22 +13,33 @@ namespace Alliance_Explorer.Pages
 		[BindProperty] public string Name { get; set; } = string.Empty;
 		[BindProperty] public string Password { get; set; } = string.Empty;
 
-		AccountCollection accountCollection = new AccountCollection(new AccountRepository());
+		AccountCollection _accountCollection;
 
         public async Task<IActionResult> OnGet()
         {
-            if (User.Identity.IsAuthenticated)
+            if (User.Identity!.IsAuthenticated)
             {
                 await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
                 return RedirectToPage("/Index");
             }
 
-            return Page();
+            try
+            {
+	            _accountCollection = new AccountCollection(new AccountRepository());
+            }
+            catch
+            {
+	            return RedirectToPage("/Error");
+            }
+
+			return Page();
         }
 
         public async Task<IActionResult> OnPostLogIn()
 		{
-			if (accountCollection.LogInCheck(Name, Password))
+			_accountCollection = new AccountCollection(new AccountRepository());
+
+			if (_accountCollection.LogInCheck(Name, Password))
 			{
 				// 1. Create user claims (info about the user)
 				var claims = new List<Claim>

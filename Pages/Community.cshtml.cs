@@ -22,8 +22,8 @@ namespace Alliance_Explorer.Pages
 
 		public Community? Community { get; set; } = null;
 
-		private CommunityCollection CommunityCollection = new CommunityCollection(new CommunityRepository());
-		private AccountCollection AccountCollection = new AccountCollection(new AccountRepository());
+		private CommunityCollection CommunityCollection;
+		private AccountCollection AccountCollection;
 
 		private Account currentAccount = null;
 
@@ -32,12 +32,21 @@ namespace Alliance_Explorer.Pages
         public List<Account> Members { get; set; } = new List<Account>();
 
 
-		public void OnGet()
+		public IActionResult OnGet()
 		{
+			try
+			{
+				CommunityCollection = new CommunityCollection(new CommunityRepository());
+				AccountCollection = new AccountCollection(new AccountRepository());
+				this.Community = CommunityCollection.FindCommunityByID(SelectedCommunityId.Value);
+			}
+			catch
+			{
+				return RedirectToPage("/error");
+			}
+
 			if (SelectedCommunityId.HasValue)
 			{
-				this.Community = CommunityCollection.FindCommunityByID(SelectedCommunityId.Value);
-
 				this.Alliances.Clear();
 				this.Alliances = this.Community.GetAllAlliances(true);
 				this.CommunitySubject = this.Community.subject;
@@ -48,10 +57,15 @@ namespace Alliance_Explorer.Pages
 				this.currentAccount = AccountCollection.GetAccountByName(User.Identity.Name);
 				this.Joined = this.Community.IsAccountInCommunity(this.currentAccount);
 			}
+
+			return Page();
 		}
 
 		public IActionResult OnPostJoin()
 		{
+			CommunityCollection = new CommunityCollection(new CommunityRepository());
+			AccountCollection = new AccountCollection(new AccountRepository());
+
 			this.Community = CommunityCollection.FindCommunityByID(SelectedCommunityId.Value);
 			this.currentAccount = AccountCollection.GetAccountByName(User.Identity.Name);
 
@@ -62,6 +76,9 @@ namespace Alliance_Explorer.Pages
 
 		public IActionResult OnPostLeave()
 		{
+			CommunityCollection = new CommunityCollection(new CommunityRepository());
+			AccountCollection = new AccountCollection(new AccountRepository());
+
 			this.Community = CommunityCollection.FindCommunityByID(SelectedCommunityId.Value);
 			this.currentAccount = AccountCollection.GetAccountByName(User.Identity.Name);
 

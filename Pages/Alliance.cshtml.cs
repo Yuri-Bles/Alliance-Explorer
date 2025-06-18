@@ -23,8 +23,8 @@ namespace Alliance_Explorer.Pages
 		[BindProperty(SupportsGet = true)]
 		public bool Joined { get; set; } = false;
 
-		private CommunityCollection communityCollection = new CommunityCollection(new CommunityRepository());
-		private AccountCollection AccountCollection = new AccountCollection(new AccountRepository());
+		private CommunityCollection CommunityCollection;
+		private AccountCollection AccountCollection;
 
 		private Account currentAccount = null;
 
@@ -35,12 +35,21 @@ namespace Alliance_Explorer.Pages
         public List<Account> Crewmembers { get; set; } = new List<Account>();
 
 
-		public void OnGet()
+		public IActionResult OnGet()
 		{
+			try
+			{
+				CommunityCollection = new CommunityCollection(new CommunityRepository());
+				AccountCollection = new AccountCollection(new AccountRepository());
+				this.Community = CommunityCollection.FindCommunityByID(this.SelectedCommunityId);
+			}
+			catch
+			{
+				return RedirectToPage("/Error");
+			}
+
 			if (SelectedAllianceId.HasValue)
 			{
-				this.Community = communityCollection.FindCommunityByID(this.SelectedCommunityId);
-
 				this.Alliance = Community.GetAllianceByID(SelectedAllianceId.Value);
 
 				this.Name = this.Alliance.name;
@@ -60,11 +69,16 @@ namespace Alliance_Explorer.Pages
 					this.Joined = false;
 				}
 			}
+
+			return Page();
 		}
 
 		public IActionResult OnPostJoin()
 		{
-			this.Community = communityCollection.FindCommunityByID(SelectedCommunityId);
+			CommunityCollection = new CommunityCollection(new CommunityRepository());
+			AccountCollection = new AccountCollection(new AccountRepository());
+
+			this.Community = CommunityCollection.FindCommunityByID(SelectedCommunityId);
 			this.Alliance = this.Community.GetAllianceByID(SelectedAllianceId.Value);
 			this.currentAccount = AccountCollection.GetAccountByName(User.Identity.Name);
 
@@ -75,7 +89,10 @@ namespace Alliance_Explorer.Pages
 
 		public IActionResult OnPostLeave()
 		{
-			this.Community = communityCollection.FindCommunityByID(SelectedCommunityId);
+			CommunityCollection = new CommunityCollection(new CommunityRepository());
+			AccountCollection = new AccountCollection(new AccountRepository());
+
+			this.Community = CommunityCollection.FindCommunityByID(SelectedCommunityId);
 			this.Alliance = this.Community.GetAllianceByID(SelectedAllianceId.Value);
 			this.currentAccount = AccountCollection.GetAccountByName(User.Identity.Name);
 

@@ -1,6 +1,5 @@
-using System.Dynamic;
-using ClassLibraryDAL;
-using ClassLibraryLogicLayer;
+using L3LogicLayer;
+using L5DAL;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -15,39 +14,53 @@ namespace Alliance_Explorer.Pages
 		[BindProperty] public string Name { get; set; } = string.Empty;
 		[BindProperty] public string Language { get; set; } = string.Empty;
 		[BindProperty] public string? Rules { get; set; } = string.Empty;
-		[BindProperty] public bool AgeChecked { get; set; } = false;
-		[BindProperty] public bool AgeIsForced { get; set; } = false;
-		[BindProperty] public int? MinimumAge { get; set; } = null;
-		[BindProperty] public int? MaximumAge { get; set; } = null;
-		[BindProperty] public bool Online { get; set; } = false;
-		[BindProperty] public bool OnLocation { get; set; } = false;
-		[BindProperty] public double? Latitude { get; set; } = null;
-		[BindProperty] public double? Longitude { get; set; } = null;
-		[BindProperty] public bool AllowCrewmemberEvents { get; set; } = false;
+		[BindProperty] public bool AgeChecked { get; set; }
+		[BindProperty] public bool AgeIsForced { get; set; }
+		[BindProperty] public int? MinimumAge { get; set; }
+		[BindProperty] public int? MaximumAge { get; set; }
+		[BindProperty] public bool Online { get; set; }
+		[BindProperty] public bool OnLocation { get; set; }
+		[BindProperty] public double? Latitude { get; set; }
+		[BindProperty] public double? Longitude { get; set; }
+		[BindProperty] public bool AllowCrewmemberEvents { get; set; }
 
 		[BindProperty] public string ErrorMessage { get; set; } = null;
 
 
-		private CommunityCollection CommunityCollection = new CommunityCollection(new CommunityRepository());
+		private CommunityCollection? _communityCollection;
 		public Community? Community { get; set; } = null;
 		public Alliance? Alliance { get; set; } = null;
 
-		public void OnGet()
+		public IActionResult OnGet()
 		{
-			Community = CommunityCollection.FindCommunityByID(this.SelectedCommunityId!.Value);
-			Alliance = Community.GetAllianceByID(this.SelectedAllianceId);
+			try
+			{
+				_communityCollection = new CommunityCollection(new CommunityRepository());
+				Community = _communityCollection.FindCommunityById(this.SelectedCommunityId!.Value);
+			}
+			catch
+			{
+				return RedirectToPage("/Error");
+			}
 
-			Name = Alliance.name;
-			Language = Alliance.language;
-			Rules = Alliance.rules;
-			AgeIsForced = Alliance.ageIsForced;
-			MinimumAge = Alliance.minimumAge;
-			MaximumAge = Alliance.maximumAge;
-			Online = Alliance.isOnline;
-			OnLocation = Alliance.isOnLocation;
-			Latitude = Alliance.latitude;
-			Longitude = Alliance.longitude;
-			AllowCrewmemberEvents = Alliance.allowCrewmemberEvents;
+			Alliance = Community.GetAllianceById(this.SelectedAllianceId);
+
+			if (Alliance == null)
+			{
+				return RedirectToPage("/Error");
+			}
+
+			Name = Alliance.Name;
+			Language = Alliance.Language;
+			Rules = Alliance.Rules;
+			AgeIsForced = Alliance.AgeIsForced;
+			MinimumAge = Alliance.MinimumAge;
+			MaximumAge = Alliance.MaximumAge;
+			Online = Alliance.IsOnline;
+			OnLocation = Alliance.IsOnLocation;
+			Latitude = Alliance.Latitude;
+			Longitude = Alliance.Longitude;
+			AllowCrewmemberEvents = Alliance.AllowCrewmemberEvents;
 
 			if (MinimumAge != null || MaximumAge != null)
 			{
@@ -57,24 +70,28 @@ namespace Alliance_Explorer.Pages
 			{
 				AgeChecked = false;
 			}
+
+			return Page();
 		}
 
 		public IActionResult OnPostChange()
 		{
+			_communityCollection = new CommunityCollection(new CommunityRepository());
+
 			if (SelectedCommunityId.HasValue)
 			{
-				this.Community = CommunityCollection.FindCommunityByID(SelectedCommunityId.Value);
+				this.Community = _communityCollection.FindCommunityById(SelectedCommunityId.Value);
 				Alliance alliance = new Alliance(this.SelectedAllianceId, this.Name, this.MinimumAge, this.MaximumAge, this.Language, this.Latitude, this.Longitude, this.Rules, this.AgeIsForced, this.OnLocation, this.Online, this.AllowCrewmemberEvents);
 
-				if (alliance.name != null && alliance.language != null && alliance.ageIsForced != null && alliance.isOnline != null && alliance.isOnLocation != null && alliance.allowCrewmemberEvents != null)
+				if (alliance.Name != "" && alliance.Language != "")
 				{
-					if (alliance.isOnLocation || alliance.isOnline)
+					if (alliance.IsOnLocation || alliance.IsOnline)
 					{
 						if (AgeChecked && MinimumAge <= MaximumAge)
 						{
-							if ((alliance.isOnLocation && alliance.latitude != null && alliance.longitude != null) || !alliance.isOnLocation)
+							if ((alliance.IsOnLocation && alliance.Latitude != null && alliance.Longitude != null) || !alliance.IsOnLocation)
 							{
-								this.Alliance.ChangeSettings(alliance, this.AgeChecked);
+								this.Alliance!.ChangeSettings(alliance, this.AgeChecked);
 								return RedirectToPage("Community", new { SelectedCommunityId = this.SelectedCommunityId });
 							}
 							else
@@ -110,8 +127,10 @@ namespace Alliance_Explorer.Pages
 
 		public IActionResult OnPostDelete()
 		{
-			Community = CommunityCollection.FindCommunityByID(this.SelectedCommunityId!.Value);
-			Alliance = Community.GetAllianceByID(SelectedAllianceId);
+			_communityCollection = new CommunityCollection(new CommunityRepository());
+
+			Community = _communityCollection.FindCommunityById(this.SelectedCommunityId!.Value);
+			Alliance = Community.GetAllianceById(SelectedAllianceId);
 			Alliance.Delete();
 			return RedirectToPage("Community", new { SelectedCommunityId = this.SelectedCommunityId });
 		}

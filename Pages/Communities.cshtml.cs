@@ -1,5 +1,5 @@
-using ClassLibraryDAL;
-using ClassLibraryLogicLayer;
+using L3LogicLayer;
+using L5DAL;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -10,10 +10,22 @@ namespace Alliance_Explorer.Pages
 	public class CommunitiesModel : PageModel
 	{
         public List<Community> Communities { get; set; } = new List<Community>();
-        public void Onget()
+        private CommunityCollection? _communityCollection;
+
+        public IActionResult Onget()
         {
-		    CommunityCollection communityCollection = new CommunityCollection(new CommunityRepository());
-		    Communities = communityCollection.GetAllCommunities();
+	        try
+	        {
+		        _communityCollection = new CommunityCollection(new CommunityRepository());
+	        }
+	        catch
+	        {
+		        return RedirectToPage("/Error");
+	        }
+
+		    Communities = _communityCollection.GetAllCommunities();
+
+		    return Page();
         }
 	}
 }
