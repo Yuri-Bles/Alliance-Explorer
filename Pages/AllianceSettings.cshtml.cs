@@ -89,7 +89,7 @@ namespace Alliance_Explorer.Pages
 					{
 						if (AgeChecked && MinimumAge <= MaximumAge)
 						{
-							if ((alliance.IsOnLocation && alliance.Latitude != null && alliance.Longitude != null) || !alliance.IsOnLocation)
+							if (alliance is { IsOnLocation: true, Latitude: not null, Longitude: not null } || !alliance.IsOnLocation)
 							{
 								this.Alliance!.ChangeSettings(alliance, this.AgeChecked);
 								return RedirectToPage("Community", new { SelectedCommunityId = this.SelectedCommunityId });

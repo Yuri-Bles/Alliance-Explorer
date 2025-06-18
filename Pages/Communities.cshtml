@@ -35,12 +35,12 @@
 			@foreach (var community in Model.Communities)
 			{
 				<div class="community-card">
-					<h2>@community.subject</h2>
-					<p><strong>Members:</strong> @community.memberCount</p>
-					<p>@community.description</p>
+					<h2>@community.Subject</h2>
+					<p><strong>Members:</strong> @community.MemberCount</p>
+					<p>@community.Description</p>
 					<form method="post" asp-page="/Community">
-						<input type="hidden" name="communityId" value="@community.ID" />
-						<a class="button" asp-page="/Community" asp-route-SelectedCommunityId="@community.ID">View</a>
+						<input type="hidden" name="communityId" value="@community.Id" />
+						<a class="button" asp-page="/Community" asp-route-SelectedCommunityId="@community.Id">View</a>
 					</form>
 				</div>
 			}

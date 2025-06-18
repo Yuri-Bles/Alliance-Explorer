@@ -76,12 +76,12 @@
 				@foreach (var alliance in Model.Alliances)
 				{
 					<div class="alliance-card">
-						<h2>@alliance.name</h2>
+						<h2>@alliance.Name</h2>
 						<p><strong>Crewmembers:</strong> @alliance.GetMemberCount()</p>
-						<p>@alliance.rules</p>
+						<p>@alliance.Rules</p>
 						<form method="post" asp-page="/Alliance">
-							<input type="hidden" name="allianceId" value="@alliance.GetID()" />
-							<a class="button" asp-page="/Alliance" asp-route-SelectedAllianceId="@alliance.GetID()" asp-route-SelectedCommunityId="@Model.Community.ID">View</a>
+							<input type="hidden" name="allianceId" value="@alliance.GetId()" />
+							<a class="button" asp-page="/Alliance" asp-route-SelectedAllianceId="@alliance.GetId()" asp-route-SelectedCommunityId="@Model.Community.Id">View</a>
 						</form>
 					</div>
 				}
@@ -90,16 +90,16 @@
 				@foreach (var admin in Model.Admins)
 				{
 					<div class="admin">
-						<h4>Admin: @admin.name</h4>
-						<h5>Age: @admin.age</h5>
+						<h4>Admin: @admin.Name</h4>
+						<h5>Age: @admin.Age</h5>
 					</div>
 				}
 
 				@foreach (var account in Model.Members)
 				{
 					<div class="account">
-						<h4>@account.name</h4>
-						<h5>Age: @account.age</h5>
+						<h4>@account.Name</h4>
+						<h5>Age: @account.Age</h5>
 					</div>
 				}
 			</div>

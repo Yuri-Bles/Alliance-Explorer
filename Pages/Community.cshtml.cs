@@ -1,5 +1,3 @@
-using ClassLibraryDAL;
-using ClassLibraryLogicLayer;
 using L3LogicLayer;
 using L5DAL;
 using Microsoft.AspNetCore.Authorization;
@@ -22,23 +20,23 @@ namespace Alliance_Explorer.Pages
 
 		public Community? Community { get; set; } = null;
 
-		private CommunityCollection CommunityCollection;
-		private AccountCollection AccountCollection;
+		private CommunityCollection? _communityCollection;
+		private AccountCollection? _accountCollection;
 
-		private Account currentAccount = null;
+		private Account? _currentAccount = null;
 
 		public List<Alliance> Alliances { get; set; } = new List<Alliance>();
-        public List<Account> Admins { get; set; } = new List<Account>();
-        public List<Account> Members { get; set; } = new List<Account>();
+        public List<Account?> Admins { get; set; } = new List<Account?>();
+        public List<Account?> Members { get; set; } = new List<Account?>();
 
 
 		public IActionResult OnGet()
 		{
 			try
 			{
-				CommunityCollection = new CommunityCollection(new CommunityRepository());
-				AccountCollection = new AccountCollection(new AccountRepository());
-				this.Community = CommunityCollection.FindCommunityByID(SelectedCommunityId.Value);
+				_communityCollection = new CommunityCollection(new CommunityRepository());
+				_accountCollection = new AccountCollection(new AccountRepository());
+				this.Community = _communityCollection.FindCommunityById(SelectedCommunityId.Value);
 			}
 			catch
 			{
@@ -49,13 +47,13 @@ namespace Alliance_Explorer.Pages
 			{
 				this.Alliances.Clear();
 				this.Alliances = this.Community.GetAllAlliances(true);
-				this.CommunitySubject = this.Community.subject;
+				this.CommunitySubject = this.Community.Subject;
 
 				this.Admins = this.Community.GetAdmins();
 				this.Members = this.Community.GetMembers();
 
-				this.currentAccount = AccountCollection.GetAccountByName(User.Identity.Name);
-				this.Joined = this.Community.IsAccountInCommunity(this.currentAccount);
+				this._currentAccount = _accountCollection.GetAccountByName(User.Identity.Name);
+				this.Joined = this.Community.IsAccountInCommunity(this._currentAccount);
 			}
 
 			return Page();
@@ -63,26 +61,26 @@ namespace Alliance_Explorer.Pages
 
 		public IActionResult OnPostJoin()
 		{
-			CommunityCollection = new CommunityCollection(new CommunityRepository());
-			AccountCollection = new AccountCollection(new AccountRepository());
+			_communityCollection = new CommunityCollection(new CommunityRepository());
+			_accountCollection = new AccountCollection(new AccountRepository());
 
-			this.Community = CommunityCollection.FindCommunityByID(SelectedCommunityId.Value);
-			this.currentAccount = AccountCollection.GetAccountByName(User.Identity.Name);
+			this.Community = _communityCollection.FindCommunityById(SelectedCommunityId.Value);
+			this._currentAccount = _accountCollection.GetAccountByName(User.Identity.Name);
 
-			this.Community.AccountJoinsCommunity(currentAccount, false);
+			this.Community.AccountJoinsCommunity(_currentAccount, false);
 
 			return RedirectToPage(new { SelectedCommunityId = SelectedCommunityId });
 		}
 
 		public IActionResult OnPostLeave()
 		{
-			CommunityCollection = new CommunityCollection(new CommunityRepository());
-			AccountCollection = new AccountCollection(new AccountRepository());
+			_communityCollection = new CommunityCollection(new CommunityRepository());
+			_accountCollection = new AccountCollection(new AccountRepository());
 
-			this.Community = CommunityCollection.FindCommunityByID(SelectedCommunityId.Value);
-			this.currentAccount = AccountCollection.GetAccountByName(User.Identity.Name);
+			this.Community = _communityCollection.FindCommunityById(SelectedCommunityId.Value);
+			this._currentAccount = _accountCollection.GetAccountByName(User.Identity.Name);
 
-			this.Community.AccountLeavesCommunity(currentAccount);
+			this.Community.AccountLeavesCommunity(_currentAccount);
 
 			return RedirectToPage(new { SelectedCommunityId = SelectedCommunityId });
 		}

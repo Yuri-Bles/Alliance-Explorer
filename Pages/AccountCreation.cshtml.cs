@@ -3,13 +3,13 @@ using L5DAL;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace L1FrontEnd.Pages
+namespace Alliance_Explorer.Pages
 {
 	public class AccountCreationModel : PageModel
 	{
-		[BindProperty] public string Name { get; set; } = string.Empty;
-		[BindProperty] public string Password { get; set; } = string.Empty;
-		[BindProperty] public string Email { get; set; }
+		[BindProperty] public string? Name { get; set; } = string.Empty;
+		[BindProperty] public string? Password { get; set; } = string.Empty;
+		[BindProperty] public string? Email { get; set; }
 		[BindProperty] public DateOnly Birthday { get; set; }
 		[BindProperty] public double Latitude { get; set; }
 		[BindProperty] public double Longitude { get; set; }

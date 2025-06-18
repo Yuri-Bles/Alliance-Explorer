@@ -10,8 +10,8 @@ namespace Alliance_Explorer.Pages
 {
 	public class IndexModel : PageModel
 	{
-		[BindProperty] public string Name { get; set; } = string.Empty;
-		[BindProperty] public string Password { get; set; } = string.Empty;
+		[BindProperty] public string? Name { get; set; } = string.Empty;
+		[BindProperty] public string? Password { get; set; } = string.Empty;
 
 		AccountCollection _accountCollection;
 

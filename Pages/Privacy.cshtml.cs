@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace L1FrontEnd.Pages
+namespace Alliance_Explorer.Pages
 {
 	public class PrivacyModel : PageModel
 	{

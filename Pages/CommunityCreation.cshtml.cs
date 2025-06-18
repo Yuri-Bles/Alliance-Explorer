@@ -19,10 +19,10 @@ namespace Alliance_Explorer.Pages
 		public string Description { get; set; } = string.Empty;
 
 		[BindProperty] public string? ErrorMessage { get; set; } = string.Empty;
-		private Account? _currentAccount = null;
+		private Account? _currentAccount;
 
-		private CommunityCollection _communityCollection;
-		private AccountCollection _accountCollection;
+		private CommunityCollection? _communityCollection;
+		private AccountCollection? _accountCollection;
 
 		public IActionResult OnPostCreate()
 		{

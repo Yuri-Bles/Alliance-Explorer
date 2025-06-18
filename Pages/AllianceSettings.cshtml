@@ -25,10 +25,10 @@
 		<h5 class="display-8">* means required</h5>
 
 		<h3 class="display-8">Name*</h3>
-			<input class="quarter-textbox" type="text" id="name" name="name" asp-for="Name" value=@Model.Alliance.name>
+			<input class="quarter-textbox" type="text" id="name" name="name" asp-for="Name" value=@Model.Alliance.Name>
 
 		<h3 class="display-8">Language*</h3>
-			<input class="quarter-textbox" type="text" id="language" name="language" asp-for="Language" value=@Model.Alliance.language>
+			<input class="quarter-textbox" type="text" id="language" name="language" asp-for="Language" value=@Model.Alliance.Language>
 
 		<h3 class="display-8">Rules</h3>
 		<textarea class="textbox" asp-for="Rules"></textarea>
@@ -39,31 +39,31 @@
 		</label>
 		<br/>
 		<label>
-				<input type="checkbox" asp-for="AgeIsForced" id="ageIsForced" disabled="@ageIsDisabled" value=@Model.Alliance.ageIsForced /> Force age requirement
+				<input type="checkbox" asp-for="AgeIsForced" id="ageIsForced" disabled="@ageIsDisabled" value=@Model.Alliance.AgeIsForced /> Force age requirement
 		</label>
 		<br/>
-			<input class="half-textbox" asp-for="MinimumAge" id="minAge" value=0 disabled="@ageIsDisabled" value=@Model.Alliance.minimumAge/>
-			<input class="half-textbox" asp-for="MaximumAge" id="maxAge" value=0 disabled="@ageIsDisabled" value=@Model.Alliance.maximumAge />
+			<input class="half-textbox" asp-for="MinimumAge" id="minAge" value=0 disabled="@ageIsDisabled" value=@Model.Alliance.MinimumAge/>
+			<input class="half-textbox" asp-for="MaximumAge" id="maxAge" value=0 disabled="@ageIsDisabled" value=@Model.Alliance.MaximumAge />
 		<br/>
 
 		<h3 class="display-8">Online, in person, or both?*</h3>
 		<label>
-				<input type="checkbox" asp-for="Online" id="online" value=@Model.Alliance.isOnline/> Online
+				<input type="checkbox" asp-for="Online" id="online" value=@Model.Alliance.IsOnline/> Online
 		</label>
 		<br/>
 		<label>
-				<input type="checkbox" asp-for="OnLocation" id="onLocation" value=@Model.Alliance.isOnLocation /> In person
+				<input type="checkbox" asp-for="OnLocation" id="onLocation" value=@Model.Alliance.IsOnLocation /> In person
 		</label>
 		<br/>
 
 		<h3 class="display-8">Latitude and longitude of meetup location (required if in person is selected)</h3>
-			<input class="textbox" type="number" step="any" id="latitude" name="latitude" asp-for="Latitude" disabled="@locationIsDisabled" value=@Model.Alliance.latitude> Latitude
-			<input class="textbox" type="number" step="any" id="longitude" name="longitude" asp-for="Longitude" disabled="@locationIsDisabled" value=@Model.Alliance.longitude> Longitude
+			<input class="textbox" type="number" step="any" id="latitude" name="latitude" asp-for="Latitude" disabled="@locationIsDisabled" value=@Model.Alliance.Latitude> Latitude
+			<input class="textbox" type="number" step="any" id="longitude" name="longitude" asp-for="Longitude" disabled="@locationIsDisabled" value=@Model.Alliance.Longitude> Longitude
 		<br/>
 
 		<h3 class="display-8">Are crewmembers allowed to add events?</h3>
 		<label>
-				<input type="checkbox" asp-for="AllowCrewmemberEvents" id="allowCrewmemberEvents" value=@Model.Alliance.allowCrewmemberEvents/> Allow Crewmember Events
+				<input type="checkbox" asp-for="AllowCrewmemberEvents" id="allowCrewmemberEvents" value=@Model.Alliance.AllowCrewmemberEvents/> Allow Crewmember Events
 		</label>
 		<br/>
 		

@@ -1,10 +1,10 @@
-using L5DAL;
 using L3LogicLayer;
+using L5DAL;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace L1FrontEnd.Pages
+namespace Alliance_Explorer.Pages
 {
 	[Authorize]
 	public class CommunitySettingsModel : PageModel
@@ -26,7 +26,7 @@ namespace L1FrontEnd.Pages
 
 		private CommunityCollection _communityCollection = new CommunityCollection(new CommunityRepository());
 
-		private Community _community;
+		private Community? _community;
 
 		public void OnPostChangeSubject()
 		{
