@@ -39,7 +39,7 @@ namespace Alliance_Explorer.Pages
 				this.Community = CommunityCollection.FindCommunityByID(SelectedCommunityId.Value);
 
 				this.Alliances.Clear();
-				this.Alliances = this.Community.GetAllAlliances();
+				this.Alliances = this.Community.GetAllAlliances(true);
 				this.CommunitySubject = this.Community.subject;
 
 				this.Admins = this.Community.GetAdmins();

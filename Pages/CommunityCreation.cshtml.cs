@@ -19,6 +19,8 @@ namespace Alliance_Explorer.Pages
 
 		[BindProperty]
 		public string Description { get; set; } = string.Empty;
+
+		[BindProperty] public string? ErrorMessage { get; set; } = string.Empty;
 		public List<Community> Communities { get; set; } = new List<Community>();
 		private Account currentAccount = null;
 
@@ -27,9 +29,18 @@ namespace Alliance_Explorer.Pages
 
 		public IActionResult OnPostCreate()
         {
-	        this.currentAccount = AccountCollection.GetAccountByName(User.Identity.Name);
-			CommunityCollection.CreateCommunity(Subject, Language, Description, this.currentAccount);
-			return RedirectToPage("Communities");
+	        this.ErrorMessage = CommunityCollection.CreateCheck(this.Subject, this.Language, this.Description);
+
+	        if (this.ErrorMessage == null)
+	        {
+				this.currentAccount = AccountCollection.GetAccountByName(User.Identity.Name);
+				CommunityCollection.CreateCommunity(Subject, Language, Description, this.currentAccount, new CommunityDAL());
+				return RedirectToPage("Communities");
+			}
+	        else
+	        {
+		        return Page();
+	        }
 		}
 	}
 }

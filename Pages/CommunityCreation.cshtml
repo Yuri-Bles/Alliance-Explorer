@@ -25,8 +25,12 @@
 
 			<h3 class="display-8">Description</h3>
 			<textarea class="textbox" type="text" id="description" name="description" asp-for="Description"></textarea>
-
-			<h1></h1>
+			<br />
+			@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+			{
+				<p id="error" class="error">@Model.ErrorMessage</p>
+			}
+			<br/>
 			<button class="button" asp-area="" asp-page-handler="Create">Create</button>
 		</form>
 		<p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
