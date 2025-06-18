@@ -37,8 +37,8 @@ namespace Alliance_Explorer.Pages
 		{
 			try
 			{
-				_communityCollection = new CommunityCollection(new CommunityRepository());
-				_accountCollection = new AccountCollection(new AccountRepository());
+				_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
+				_accountCollection = new AccountCollection(new AccountCollectionRepository());
 				this.Community = _communityCollection.FindCommunityById(this.SelectedCommunityId);
 			}
 			catch
@@ -73,8 +73,8 @@ namespace Alliance_Explorer.Pages
 
 		public IActionResult OnPostJoin()
 		{
-			_communityCollection = new CommunityCollection(new CommunityRepository());
-			_accountCollection = new AccountCollection(new AccountRepository());
+			_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
+			_accountCollection = new AccountCollection(new AccountCollectionRepository());
 
 			this.Community = _communityCollection.FindCommunityById(SelectedCommunityId);
 			this.Alliance = this.Community.GetAllianceById(SelectedAllianceId.Value);
@@ -87,8 +87,8 @@ namespace Alliance_Explorer.Pages
 
 		public IActionResult OnPostLeave()
 		{
-			_communityCollection = new CommunityCollection(new CommunityRepository());
-			_accountCollection = new AccountCollection(new AccountRepository());
+			_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
+			_accountCollection = new AccountCollection(new AccountCollectionRepository());
 
 			this.Community = _communityCollection.FindCommunityById(SelectedCommunityId);
 			this.Alliance = this.Community.GetAllianceById(SelectedAllianceId.Value);

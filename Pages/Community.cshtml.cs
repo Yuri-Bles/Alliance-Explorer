@@ -34,8 +34,8 @@ namespace Alliance_Explorer.Pages
 		{
 			try
 			{
-				_communityCollection = new CommunityCollection(new CommunityRepository());
-				_accountCollection = new AccountCollection(new AccountRepository());
+				_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
+				_accountCollection = new AccountCollection(new AccountCollectionRepository());
 				this.Community = _communityCollection.FindCommunityById(SelectedCommunityId.Value);
 			}
 			catch
@@ -61,8 +61,8 @@ namespace Alliance_Explorer.Pages
 
 		public IActionResult OnPostJoin()
 		{
-			_communityCollection = new CommunityCollection(new CommunityRepository());
-			_accountCollection = new AccountCollection(new AccountRepository());
+			_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
+			_accountCollection = new AccountCollection(new AccountCollectionRepository());
 
 			this.Community = _communityCollection.FindCommunityById(SelectedCommunityId.Value);
 			this._currentAccount = _accountCollection.GetAccountByName(User.Identity.Name);
@@ -74,8 +74,8 @@ namespace Alliance_Explorer.Pages
 
 		public IActionResult OnPostLeave()
 		{
-			_communityCollection = new CommunityCollection(new CommunityRepository());
-			_accountCollection = new AccountCollection(new AccountRepository());
+			_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
+			_accountCollection = new AccountCollection(new AccountCollectionRepository());
 
 			this.Community = _communityCollection.FindCommunityById(SelectedCommunityId.Value);
 			this._currentAccount = _accountCollection.GetAccountByName(User.Identity.Name);

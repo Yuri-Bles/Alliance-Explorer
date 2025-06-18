@@ -16,7 +16,7 @@ namespace Alliance_Explorer.Pages
         {
 	        try
 	        {
-		        _communityCollection = new CommunityCollection(new CommunityRepository());
+		        _communityCollection = new CommunityCollection(new CommunityCollectionRepository());
 	        }
 	        catch
 	        {

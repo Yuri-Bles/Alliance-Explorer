@@ -25,7 +25,7 @@ namespace Alliance_Explorer.Pages
 
             try
             {
-	            _accountCollection = new AccountCollection(new AccountRepository());
+	            _accountCollection = new AccountCollection(new AccountCollectionRepository());
             }
             catch
             {
@@ -37,7 +37,7 @@ namespace Alliance_Explorer.Pages
 
         public async Task<IActionResult> OnPostLogIn()
 		{
-			_accountCollection = new AccountCollection(new AccountRepository());
+			_accountCollection = new AccountCollection(new AccountCollectionRepository());
 
 			if (_accountCollection.LogInCheck(Name, Password))
 			{

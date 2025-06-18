@@ -24,13 +24,13 @@ namespace Alliance_Explorer.Pages
 		[BindProperty(SupportsGet = true)]
 		public int SelectedCommunityId { get; set; }
 
-		private CommunityCollection _communityCollection = new CommunityCollection(new CommunityRepository());
+		private CommunityCollection _communityCollection = new CommunityCollection(new CommunityCollectionRepository());
 
 		private Community? _community;
 
 		public void OnPostChangeSubject()
 		{
-			_communityCollection = new CommunityCollection(new CommunityRepository());
+			_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
 
 			_community = _communityCollection.FindCommunityById(SelectedCommunityId);
 			_communityCollection.UpdateString(_community, "subject", Subject);
@@ -38,7 +38,7 @@ namespace Alliance_Explorer.Pages
 
 		public void OnPostChangeLanguage()
 		{
-			_communityCollection = new CommunityCollection(new CommunityRepository());
+			_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
 
 			_community = _communityCollection.FindCommunityById(SelectedCommunityId);
 			_communityCollection.UpdateString(_community, "language", Language);
@@ -46,7 +46,7 @@ namespace Alliance_Explorer.Pages
 
 		public void OnPostChangeDescription()
 		{
-			_communityCollection = new CommunityCollection(new CommunityRepository());
+			_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
 
 			_community = _communityCollection.FindCommunityById(SelectedCommunityId);
 			_communityCollection.UpdateString(_community, "description", Description);
@@ -54,7 +54,7 @@ namespace Alliance_Explorer.Pages
 
 		public void OnPostChangeRules()
 		{
-			_communityCollection = new CommunityCollection(new CommunityRepository());
+			_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
 
 			_community = _communityCollection.FindCommunityById(SelectedCommunityId);
 			_communityCollection.UpdateString(_community, "rules", Rules);
@@ -62,7 +62,7 @@ namespace Alliance_Explorer.Pages
 
 		public IActionResult OnPostDelete()
 		{
-			_communityCollection = new CommunityCollection(new CommunityRepository());
+			_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
 
 	        _community = _communityCollection.FindCommunityById(SelectedCommunityId);
 	        _communityCollection.DeleteCommunityById(_community);

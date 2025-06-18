@@ -35,7 +35,7 @@ namespace Alliance_Explorer.Pages
 		{
 			try
 			{
-				_communityCollection = new CommunityCollection(new CommunityRepository());
+				_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
 				Community = _communityCollection.FindCommunityById(this.SelectedCommunityId!.Value);
 			}
 			catch
@@ -76,7 +76,7 @@ namespace Alliance_Explorer.Pages
 
 		public IActionResult OnPostChange()
 		{
-			_communityCollection = new CommunityCollection(new CommunityRepository());
+			_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
 
 			if (SelectedCommunityId.HasValue)
 			{
@@ -127,7 +127,7 @@ namespace Alliance_Explorer.Pages
 
 		public IActionResult OnPostDelete()
 		{
-			_communityCollection = new CommunityCollection(new CommunityRepository());
+			_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
 
 			Community = _communityCollection.FindCommunityById(this.SelectedCommunityId!.Value);
 			Alliance = Community.GetAllianceById(SelectedAllianceId);

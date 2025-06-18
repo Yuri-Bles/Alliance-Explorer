@@ -27,7 +27,7 @@ namespace Alliance_Explorer.Pages
 
 		public IActionResult OnPostSignUp()
 		{
-			_accountCollection = new AccountCollection(new AccountRepository());
+			_accountCollection = new AccountCollection(new AccountCollectionRepository());
 
 			this.ErrorMessage = _accountCollection.SignInCheck(Name, Password, Email, Birthday, Latitude, Longitude);
 			if (this.ErrorMessage == null)

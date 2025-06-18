@@ -26,15 +26,15 @@ namespace Alliance_Explorer.Pages
 
 		public IActionResult OnPostCreate()
 		{
-			_communityCollection = new CommunityCollection(new CommunityRepository());
-			_accountCollection = new AccountCollection(new AccountRepository());
+			_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
+			_accountCollection = new AccountCollection(new AccountCollectionRepository());
 
 	        this.ErrorMessage = _communityCollection.CreateCheck(this.Subject, this.Language, this.Description);
 
 	        if (this.ErrorMessage == null)
 	        {
 				this._currentAccount = _accountCollection.GetAccountByName(User.Identity.Name);
-				_communityCollection.CreateCommunity(Subject, Language, Description, this._currentAccount, new CommunityDal());
+				_communityCollection.CreateCommunity(Subject, Language, Description, this._currentAccount, new CommunityRepository());
 				return RedirectToPage("Communities");
 			}
 	        else

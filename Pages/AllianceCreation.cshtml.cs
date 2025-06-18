@@ -34,8 +34,8 @@ namespace Alliance_Explorer.Pages
 
 		public IActionResult OnPostCreate()
 		{
-			_communityCollection = new CommunityCollection(new CommunityRepository());
-			_accountCollection = new AccountCollection(new AccountRepository());
+			_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
+			_accountCollection = new AccountCollection(new AccountCollectionRepository());
 
 
 			if (SelectedCommunityId.HasValue)
