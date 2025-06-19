@@ -37,9 +37,9 @@ namespace Alliance_Explorer.Pages
 		{
 			try
 			{
-				_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
+				_communityCollection = new CommunityCollection(new CommunityCollectionRepository(), new CommunityRepository());
 				_accountCollection = new AccountCollection(new AccountCollectionRepository());
-				this.Community = _communityCollection.FindCommunityById(SelectedCommunityId.Value);
+				this.Community = _communityCollection.FindCommunityById(SelectedCommunityId.Value, new CommunityRepository());
 				this.Admins = Community.GetAdmins();
 				this.Members = Community.GetMembers();
 			}
@@ -75,10 +75,10 @@ namespace Alliance_Explorer.Pages
 
 		public IActionResult OnPostJoin()
 		{
-			_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
+			_communityCollection = new CommunityCollection(new CommunityCollectionRepository(), new CommunityRepository());
 			_accountCollection = new AccountCollection(new AccountCollectionRepository());
 
-			this.Community = _communityCollection.FindCommunityById(SelectedCommunityId.Value);
+			this.Community = _communityCollection.FindCommunityById(SelectedCommunityId.Value, new CommunityRepository());
 			this._currentAccount = _accountCollection.GetAccountByName(User.Identity.Name);
 
 			this.Community.AccountJoinsCommunity(_currentAccount, false);
@@ -88,10 +88,10 @@ namespace Alliance_Explorer.Pages
 
 		public IActionResult OnPostLeave()
 		{
-			_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
+			_communityCollection = new CommunityCollection(new CommunityCollectionRepository(), new CommunityRepository());
 			_accountCollection = new AccountCollection(new AccountCollectionRepository());
 
-			this.Community = _communityCollection.FindCommunityById(SelectedCommunityId.Value);
+			this.Community = _communityCollection.FindCommunityById(SelectedCommunityId.Value, new CommunityRepository());
 			this._currentAccount = _accountCollection.GetAccountByName(User.Identity.Name);
 
 			this.Community.AccountLeavesCommunity(_currentAccount);

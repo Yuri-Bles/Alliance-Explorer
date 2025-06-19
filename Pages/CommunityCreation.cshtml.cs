@@ -26,7 +26,7 @@ namespace Alliance_Explorer.Pages
 
 		public IActionResult OnPostCreate()
 		{
-			_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
+			_communityCollection = new CommunityCollection(new CommunityCollectionRepository(), new CommunityRepository());
 			_accountCollection = new AccountCollection(new AccountCollectionRepository());
 
 	        this.ErrorMessage = _communityCollection.CreateCheck(this.Subject, this.Language, this.Description);

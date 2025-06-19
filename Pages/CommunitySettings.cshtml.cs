@@ -24,47 +24,47 @@ namespace Alliance_Explorer.Pages
 		[BindProperty(SupportsGet = true)]
 		public int SelectedCommunityId { get; set; }
 
-		private CommunityCollection _communityCollection = new CommunityCollection(new CommunityCollectionRepository());
+		private CommunityCollection _communityCollection = new CommunityCollection(new CommunityCollectionRepository(), new CommunityRepository());
 
 		private Community? _community;
 
 		public void OnPostChangeSubject()
 		{
-			_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
+			_communityCollection = new CommunityCollection(new CommunityCollectionRepository(), new CommunityRepository());
 
-			_community = _communityCollection.FindCommunityById(SelectedCommunityId);
+			_community = _communityCollection.FindCommunityById(SelectedCommunityId, new CommunityRepository());
 			_communityCollection.UpdateString(_community, "subject", Subject);
 		}
 
 		public void OnPostChangeLanguage()
 		{
-			_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
+			_communityCollection = new CommunityCollection(new CommunityCollectionRepository(), new CommunityRepository());
 
-			_community = _communityCollection.FindCommunityById(SelectedCommunityId);
+			_community = _communityCollection.FindCommunityById(SelectedCommunityId, new CommunityRepository());
 			_communityCollection.UpdateString(_community, "language", Language);
 		}
 
 		public void OnPostChangeDescription()
 		{
-			_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
+			_communityCollection = new CommunityCollection(new CommunityCollectionRepository(), new CommunityRepository());
 
-			_community = _communityCollection.FindCommunityById(SelectedCommunityId);
+			_community = _communityCollection.FindCommunityById(SelectedCommunityId, new CommunityRepository());
 			_communityCollection.UpdateString(_community, "description", Description);
 		}
 
 		public void OnPostChangeRules()
 		{
-			_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
+			_communityCollection = new CommunityCollection(new CommunityCollectionRepository(), new CommunityRepository());
 
-			_community = _communityCollection.FindCommunityById(SelectedCommunityId);
+			_community = _communityCollection.FindCommunityById(SelectedCommunityId, new CommunityRepository());
 			_communityCollection.UpdateString(_community, "rules", Rules);
 		}
 
 		public IActionResult OnPostDelete()
 		{
-			_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
+			_communityCollection = new CommunityCollection(new CommunityCollectionRepository(), new CommunityRepository());
 
-	        _community = _communityCollection.FindCommunityById(SelectedCommunityId);
+	        _community = _communityCollection.FindCommunityById(SelectedCommunityId, new CommunityRepository());
 	        _communityCollection.DeleteCommunityById(_community);
 			return RedirectToPage("Communities");
 		}

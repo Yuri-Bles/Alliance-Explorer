@@ -78,7 +78,7 @@
 				{
 					<div class="alliance-card">
 						<h2>@alliance.Name</h2>
-						<p><strong>Crewmembers:</strong> @alliance.GetMemberCount()</p>
+						<p><strong>Crewmembers:</strong> @alliance.GetMemberCount(true)</p>
 						<p>@alliance.Rules</p>
 						<form method="post" asp-page="/Alliance">
 							<input type="hidden" name="allianceId" value="@alliance.GetId()" />

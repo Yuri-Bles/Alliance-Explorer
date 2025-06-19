@@ -35,8 +35,8 @@ namespace Alliance_Explorer.Pages
 		{
 			try
 			{
-				_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
-				Community = _communityCollection.FindCommunityById(this.SelectedCommunityId!.Value);
+				_communityCollection = new CommunityCollection(new CommunityCollectionRepository(), new CommunityRepository());
+				Community = _communityCollection.FindCommunityById(this.SelectedCommunityId!.Value, new CommunityRepository());
 			}
 			catch
 			{
@@ -76,11 +76,11 @@ namespace Alliance_Explorer.Pages
 
 		public IActionResult OnPostChange()
 		{
-			_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
+			_communityCollection = new CommunityCollection(new CommunityCollectionRepository(), new CommunityRepository());
 
 			if (SelectedCommunityId.HasValue)
 			{
-				this.Community = _communityCollection.FindCommunityById(SelectedCommunityId.Value);
+				this.Community = _communityCollection.FindCommunityById(SelectedCommunityId.Value, new CommunityRepository());
 				Alliance alliance = new Alliance(this.SelectedAllianceId, this.Name, this.MinimumAge, this.MaximumAge, this.Language, this.Latitude, this.Longitude, this.Rules, this.AgeIsForced, this.OnLocation, this.Online, this.AllowCrewmemberEvents, new AllianceRepository());
 
 				if (alliance.Name != "" && alliance.Language != "")
@@ -127,9 +127,9 @@ namespace Alliance_Explorer.Pages
 
 		public IActionResult OnPostDelete()
 		{
-			_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
+			_communityCollection = new CommunityCollection(new CommunityCollectionRepository(), new CommunityRepository());
 
-			Community = _communityCollection.FindCommunityById(this.SelectedCommunityId!.Value);
+			Community = _communityCollection.FindCommunityById(this.SelectedCommunityId!.Value, new CommunityRepository());
 			Alliance = Community.GetAllianceById(SelectedAllianceId);
 			Alliance.Delete();
 			return RedirectToPage("Community", new { SelectedCommunityId = this.SelectedCommunityId });

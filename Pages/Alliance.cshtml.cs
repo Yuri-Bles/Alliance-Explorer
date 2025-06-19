@@ -1,5 +1,6 @@
 using L3LogicLayer;
 using L5DAL;
+using L6InterfacesDAL;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -43,9 +44,9 @@ namespace Alliance_Explorer.Pages
 		{
 			try
 			{
-				_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
+				_communityCollection = new CommunityCollection(new CommunityCollectionRepository(), new CommunityRepository());
 				_accountCollection = new AccountCollection(new AccountCollectionRepository());
-				this.Community = _communityCollection.FindCommunityById(this.SelectedCommunityId);
+				this.Community = _communityCollection.FindCommunityById(this.SelectedCommunityId, new CommunityRepository());
 			}
 			catch
 			{
@@ -58,8 +59,8 @@ namespace Alliance_Explorer.Pages
 
 				this.Name = this.Alliance.Name;
 
-				this.Captains = this.Alliance.GetCaptains();
-				this.Crewmembers = this.Alliance.GetCrewMembers();
+				this.Captains = this.Alliance.GetCaptains(true);
+				this.Crewmembers = this.Alliance.GetCrewMembers(true);
 
 				this._currentAccount = this._accountCollection.GetAccountByName(User.Identity.Name);
 
@@ -77,7 +78,7 @@ namespace Alliance_Explorer.Pages
 					this.DisableJoin = true;
 					this.DisableLeave = false;
 				}
-				else if (Alliance.IsAccountInCommunityThatAllianceIsIn(this._currentAccount))
+				else if (Alliance.IsAccountInCommunityThatAllianceIsIn(this._currentAccount, new CommunityCollectionRepository(), new CommunityRepository()))
 				{
 					this.DisableJoin = false;
 					this.DisableLeave = true;
@@ -94,24 +95,24 @@ namespace Alliance_Explorer.Pages
 
 		public IActionResult OnPostJoin()
 		{
-			_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
+			_communityCollection = new CommunityCollection(new CommunityCollectionRepository(), new CommunityRepository());
 			_accountCollection = new AccountCollection(new AccountCollectionRepository());
 
-			this.Community = _communityCollection.FindCommunityById(SelectedCommunityId);
+			this.Community = _communityCollection.FindCommunityById(SelectedCommunityId, new CommunityRepository());
 			this.Alliance = this.Community.GetAllianceById(SelectedAllianceId.Value);
 			this._currentAccount = _accountCollection.GetAccountByName(User.Identity.Name);
 
-			this.Alliance.AccountJoinsAlliance(_currentAccount, false);
+			this.Alliance.AccountJoinsAlliance(_currentAccount, false, new CommunityCollectionRepository(), new CommunityRepository());
 
 			return RedirectToPage(new { SelectedCommunityId = SelectedCommunityId, SelectedAllianceId = SelectedAllianceId });
 		}
 
 		public IActionResult OnPostLeave()
 		{
-			_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
+			_communityCollection = new CommunityCollection(new CommunityCollectionRepository(), new CommunityRepository());
 			_accountCollection = new AccountCollection(new AccountCollectionRepository());
 
-			this.Community = _communityCollection.FindCommunityById(SelectedCommunityId);
+			this.Community = _communityCollection.FindCommunityById(SelectedCommunityId, new CommunityRepository());
 			this.Alliance = this.Community.GetAllianceById(SelectedAllianceId.Value);
 			this._currentAccount = _accountCollection.GetAccountByName(User.Identity.Name);
 
