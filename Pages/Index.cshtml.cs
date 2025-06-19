@@ -12,6 +12,7 @@ namespace Alliance_Explorer.Pages
 	{
 		[BindProperty] public string? Name { get; set; } = string.Empty;
 		[BindProperty] public string? Password { get; set; } = string.Empty;
+		[BindProperty] public string? ErrorMessage { get; set; } = string.Empty;
 
 		AccountCollection _accountCollection;
 
@@ -59,6 +60,7 @@ namespace Alliance_Explorer.Pages
 			}
 			else
 			{
+				this.ErrorMessage = "Name or Password is incorrect, please try again.";
 				return Page();
 			}
 		}

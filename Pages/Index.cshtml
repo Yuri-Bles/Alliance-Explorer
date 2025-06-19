@@ -12,8 +12,14 @@
 		<h3 class="display-8">Password</h3>
 		<input type="password" class="quarter-textbox" id="password" asp-for="Password" />
 
-		<h1></h1>
+		<br/>
 		<button class="button" asp-area="" asp-page-handler="LogIn">Log in</button>
+		
+		@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+		{
+			<p id="error" class="error">@Model.ErrorMessage</p>
+		}
+
 		<br/>
 		<h6 class="display-8">Don't have an account?</h6>
 		<button class="link" asp-area="" asp-page-handler="SignUp">Sign Up</button>

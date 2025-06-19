@@ -41,7 +41,7 @@ namespace Alliance_Explorer.Pages
 			if (SelectedCommunityId.HasValue)
 			{
 				this.Community = _communityCollection.FindCommunityById(SelectedCommunityId.Value);
-				Alliance alliance = new Alliance(-1, this.Name, this.MinimumAge, this.MaximumAge, this.Language, this.Latitude, this.Longitude, this.Rules, this.AgeIsForced, this.OnLocation, this.Online, this.AllowCrewmemberEvents);
+				Alliance alliance = new Alliance(-1, this.Name, this.MinimumAge, this.MaximumAge, this.Language, this.Latitude, this.Longitude, this.Rules, this.AgeIsForced, this.OnLocation, this.Online, this.AllowCrewmemberEvents, new AllianceRepository());
 
 				if (alliance.Name != "" && alliance.Language != "")
 				{
