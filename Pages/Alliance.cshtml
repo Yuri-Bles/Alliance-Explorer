@@ -4,6 +4,7 @@
 	ViewData["Title"] = "Community page";
 	var disableJoin = Model.DisableJoin;
 	var disableLeave = Model.DisableLeave;
+	var isCrewmember = Model.IsCrewmember;
 }
 
 <head>
@@ -66,7 +67,7 @@
 				<form method="post">
 					<input type="hidden" asp-for="SelectedCommunityId" />
 					<input type="hidden" asp-for="SelectedAllianceId"/>
-					<a class="button" asp-page="/AllianceSettings" asp-route-SelectedCommunityId="@Model.SelectedCommunityId" asp-route-SelectedAllianceId="@Model.SelectedAllianceId">Settings</a>
+					<button class="button" asp-page="/AllianceSettings" asp-route-SelectedCommunityId="@Model.SelectedCommunityId" asp-route-SelectedAllianceId="@Model.SelectedAllianceId" disabled="@isCrewmember">Settings</button>
 					<button class="button" asp-page="/Alliance" asp-route-SelectedCommunityId="@Model.SelectedCommunityId" asp-page-handler="Join" disabled="@disableJoin">Join</button>
 					<button class="button" asp-page="/Alliance" asp-route-SelectedCommunityId="@Model.SelectedCommunityId" asp-page-handler="Leave" disabled="@disableLeave">Leave</button>
 				</form>

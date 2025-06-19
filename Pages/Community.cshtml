@@ -4,6 +4,7 @@
 	ViewData["Title"] = "Community page";
 	var joined = Model.Joined;
 	var notJoined = !Model.Joined;
+	var isMember = Model.IsMember;
 }
 
 <head>
@@ -65,7 +66,7 @@
 			<div class="first-column">
 				<form method="post">
 					<input type="hidden" asp-for="SelectedCommunityId"/>
-					<a class="button" asp-page="/CommunitySettings" asp-route-SelectedCommunityId="@Model.SelectedCommunityId">Settings</a>
+					<button class="button" asp-page="/CommunitySettings" asp-route-SelectedCommunityId="@Model.SelectedCommunityId" disabled="@isMember">Settings</button>
 					<a class="button" asp-page="/AllianceCreation" asp-route-SelectedCommunityId="@Model.SelectedCommunityId">+</a>
 					<button class="button" asp-page="/Community" asp-route-SelectedCommunityId="@Model.SelectedCommunityId" asp-page-handler="Join" disabled="@joined">Join</button>
 					<button class="button" asp-page="/Community" asp-route-SelectedCommunityId="@Model.SelectedCommunityId" asp-page-handler="Leave" disabled="@notJoined">Leave</button>

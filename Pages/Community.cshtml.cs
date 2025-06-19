@@ -18,6 +18,9 @@ namespace Alliance_Explorer.Pages
 		[BindProperty(SupportsGet = true)]
 		public bool Joined { get; set; } = false;
 
+		[BindProperty(SupportsGet = true)]
+		public bool IsMember { get; set; } = true;
+
 		public Community? Community { get; set; } = null;
 
 		private CommunityCollection? _communityCollection;
@@ -37,10 +40,21 @@ namespace Alliance_Explorer.Pages
 				_communityCollection = new CommunityCollection(new CommunityCollectionRepository());
 				_accountCollection = new AccountCollection(new AccountCollectionRepository());
 				this.Community = _communityCollection.FindCommunityById(SelectedCommunityId.Value);
+				this.Admins = Community.GetAdmins();
+				this.Members = Community.GetMembers();
 			}
 			catch
 			{
 				return RedirectToPage("/error");
+			}
+
+			foreach (var admin in Admins)
+			{
+				if (admin == _currentAccount)
+				{
+					this.IsMember = false;
+					break;
+				}
 			}
 
 			if (SelectedCommunityId.HasValue)

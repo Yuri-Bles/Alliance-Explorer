@@ -24,6 +24,9 @@ namespace Alliance_Explorer.Pages
 		[BindProperty(SupportsGet = true)]
 		public bool DisableLeave { get; set; } = false;
 
+		[BindProperty(SupportsGet = true)]
+		public bool IsCrewmember { get; set; } = true;
+
 		private CommunityCollection? _communityCollection;
 		private AccountCollection? _accountCollection;
 
@@ -59,6 +62,15 @@ namespace Alliance_Explorer.Pages
 				this.Crewmembers = this.Alliance.GetCrewMembers();
 
 				this._currentAccount = this._accountCollection.GetAccountByName(User.Identity.Name);
+
+				foreach (var captain in Captains)
+				{
+					if (captain == _currentAccount)
+					{
+						this.IsCrewmember = false;
+						break;
+					}
+				}
 
 				if (Alliance.IsAccountInAlliance(this._currentAccount))
 				{
