@@ -19,7 +19,10 @@ namespace Alliance_Explorer.Pages
 		public string? Name { get; set; }
 
 		[BindProperty(SupportsGet = true)]
-		public bool Joined { get; set; } = false;
+		public bool DisableJoin { get; set; } = false;
+
+		[BindProperty(SupportsGet = true)]
+		public bool DisableLeave { get; set; } = false;
 
 		private CommunityCollection? _communityCollection;
 		private AccountCollection? _accountCollection;
@@ -57,14 +60,20 @@ namespace Alliance_Explorer.Pages
 
 				this._currentAccount = this._accountCollection.GetAccountByName(User.Identity.Name);
 
-				if ((!this.Alliance.IsAccountInAlliance(this._currentAccount) &&
-				    !this.Alliance.IsAccountInCommunityThatAllianceIsIn(this._currentAccount)) || this.Alliance.IsAccountInAlliance(this._currentAccount))
+				if (Alliance.IsAccountInAlliance(this._currentAccount))
 				{
-					this.Joined = true;
+					this.DisableJoin = true;
+					this.DisableLeave = false;
+				}
+				else if (Alliance.IsAccountInCommunityThatAllianceIsIn(this._currentAccount))
+				{
+					this.DisableJoin = false;
+					this.DisableLeave = true;
 				}
 				else
 				{
-					this.Joined = false;
+					this.DisableJoin = true;
+					this.DisableLeave = true;
 				}
 			}
 

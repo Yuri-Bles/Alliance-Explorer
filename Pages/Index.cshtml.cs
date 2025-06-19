@@ -14,7 +14,7 @@ namespace Alliance_Explorer.Pages
 		[BindProperty] public string? Password { get; set; } = string.Empty;
 		[BindProperty] public string? ErrorMessage { get; set; } = string.Empty;
 
-		AccountCollection _accountCollection;
+		AccountCollection? _accountCollection;
 
         public async Task<IActionResult> OnGet()
         {
