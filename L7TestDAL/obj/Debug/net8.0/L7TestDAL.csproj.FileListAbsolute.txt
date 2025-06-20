@@ -1,0 +1,17 @@
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\L7TestDAL\bin\Debug\net8.0\L7TestDAL.deps.json
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\L7TestDAL\bin\Debug\net8.0\L7TestDAL.dll
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\L7TestDAL\bin\Debug\net8.0\L7TestDAL.pdb
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\L7TestDAL\bin\Debug\net8.0\L4DTOs.dll
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\L7TestDAL\bin\Debug\net8.0\L6InterfacesDAL.dll
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\L7TestDAL\bin\Debug\net8.0\L4DTOs.pdb
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\L7TestDAL\bin\Debug\net8.0\L6InterfacesDAL.pdb
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\L7TestDAL\obj\Debug\net8.0\L7TestDAL.csproj.AssemblyReference.cache
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\L7TestDAL\obj\Debug\net8.0\L7TestDAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\L7TestDAL\obj\Debug\net8.0\L7TestDAL.AssemblyInfoInputs.cache
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\L7TestDAL\obj\Debug\net8.0\L7TestDAL.AssemblyInfo.cs
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\L7TestDAL\obj\Debug\net8.0\L7TestDAL.csproj.CoreCompileInputs.cache
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\L7TestDAL\obj\Debug\net8.0\L7TestDAL.csproj.Up2Date
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\L7TestDAL\obj\Debug\net8.0\L7TestDAL.dll
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\L7TestDAL\obj\Debug\net8.0\refint\L7TestDAL.dll
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\L7TestDAL\obj\Debug\net8.0\L7TestDAL.pdb
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\L7TestDAL\obj\Debug\net8.0\ref\L7TestDAL.dll

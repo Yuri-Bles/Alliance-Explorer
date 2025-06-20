@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DTOs\L4DTOs.csproj" />
+    <ProjectReference Include="..\L6InterfacesDAL\L6InterfacesDAL.csproj" />
+  </ItemGroup>
+
+</Project>
