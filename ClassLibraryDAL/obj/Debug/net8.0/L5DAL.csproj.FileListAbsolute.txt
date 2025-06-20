@@ -1,0 +1,17 @@
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\bin\Debug\net8.0\L5DAL.deps.json
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\bin\Debug\net8.0\L5DAL.dll
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\bin\Debug\net8.0\L5DAL.pdb
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\bin\Debug\net8.0\L4DTOs.dll
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\bin\Debug\net8.0\L6InterfacesDAL.dll
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\bin\Debug\net8.0\L4DTOs.pdb
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\bin\Debug\net8.0\L6InterfacesDAL.pdb
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\obj\Debug\net8.0\L5DAL.csproj.AssemblyReference.cache
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\obj\Debug\net8.0\L5DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\obj\Debug\net8.0\L5DAL.AssemblyInfoInputs.cache
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\obj\Debug\net8.0\L5DAL.AssemblyInfo.cs
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\obj\Debug\net8.0\L5DAL.csproj.CoreCompileInputs.cache
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\obj\Debug\net8.0\L5DAL.csproj.Up2Date
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\obj\Debug\net8.0\L5DAL.dll
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\obj\Debug\net8.0\refint\L5DAL.dll
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\obj\Debug\net8.0\L5DAL.pdb
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\obj\Debug\net8.0\ref\L5DAL.dll

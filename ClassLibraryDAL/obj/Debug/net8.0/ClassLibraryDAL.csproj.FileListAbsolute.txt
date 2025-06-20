@@ -1,0 +1,12 @@
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\bin\Debug\net8.0\ClassLibraryDAL.deps.json
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\bin\Debug\net8.0\ClassLibraryDAL.dll
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\bin\Debug\net8.0\ClassLibraryDAL.pdb
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\obj\Debug\net8.0\ClassLibraryDAL.csproj.AssemblyReference.cache
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\obj\Debug\net8.0\ClassLibraryDAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\obj\Debug\net8.0\ClassLibraryDAL.AssemblyInfoInputs.cache
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\obj\Debug\net8.0\ClassLibraryDAL.AssemblyInfo.cs
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\obj\Debug\net8.0\ClassLibraryDAL.csproj.CoreCompileInputs.cache
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\obj\Debug\net8.0\ClassLibraryDAL.dll
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\obj\Debug\net8.0\refint\ClassLibraryDAL.dll
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\obj\Debug\net8.0\ClassLibraryDAL.pdb
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\obj\Debug\net8.0\ref\ClassLibraryDAL.dll

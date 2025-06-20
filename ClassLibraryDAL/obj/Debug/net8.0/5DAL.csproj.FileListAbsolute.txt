@@ -1,0 +1,5 @@
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\obj\Debug\net8.0\5DAL.csproj.AssemblyReference.cache
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\obj\Debug\net8.0\5DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\obj\Debug\net8.0\5DAL.AssemblyInfoInputs.cache
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\obj\Debug\net8.0\5DAL.AssemblyInfo.cs
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryDAL\obj\Debug\net8.0\5DAL.csproj.CoreCompileInputs.cache
