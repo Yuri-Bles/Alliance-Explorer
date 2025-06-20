@@ -1,27 +1,10 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Login page";
+    ViewData["Title"] = "Home page";
 }
 
 <div class="text-center">
-	<form method="post">
-		<h3 class="display-8">Name</h3>
-		<input type="text" class="quarter-textbox" id="name" asp-for="Name"/>
-
-		<h3 class="display-8">Password</h3>
-		<input type="password" class="quarter-textbox" id="password" asp-for="Password" />
-
-		<br/>
-		<button class="button" asp-area="" asp-page-handler="LogIn">Log in</button>
-		
-		@if (!string.IsNullOrEmpty(Model.ErrorMessage))
-		{
-			<p id="error" class="error">@Model.ErrorMessage</p>
-		}
-
-		<br/>
-		<h6 class="display-8">Don't have an account?</h6>
-		<button class="link" asp-area="" asp-page-handler="SignUp">Sign Up</button>
-	</form>
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>

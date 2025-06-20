@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Alliance_Explorer.Pages
+namespace Alliance_Explorer_DAL.Pages
 {
 	public class PrivacyModel : PageModel
 	{
