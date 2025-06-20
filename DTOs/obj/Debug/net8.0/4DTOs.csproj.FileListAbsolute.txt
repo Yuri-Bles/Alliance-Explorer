@@ -1,0 +1,11 @@
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\DTOs\bin\Debug\net8.0\4DTOs.deps.json
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\DTOs\bin\Debug\net8.0\4DTOs.dll
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\DTOs\bin\Debug\net8.0\4DTOs.pdb
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\DTOs\obj\Debug\net8.0\4DTOs.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\DTOs\obj\Debug\net8.0\4DTOs.AssemblyInfoInputs.cache
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\DTOs\obj\Debug\net8.0\4DTOs.AssemblyInfo.cs
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\DTOs\obj\Debug\net8.0\4DTOs.csproj.CoreCompileInputs.cache
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\DTOs\obj\Debug\net8.0\4DTOs.dll
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\DTOs\obj\Debug\net8.0\refint\4DTOs.dll
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\DTOs\obj\Debug\net8.0\4DTOs.pdb
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\DTOs\obj\Debug\net8.0\ref\4DTOs.dll
