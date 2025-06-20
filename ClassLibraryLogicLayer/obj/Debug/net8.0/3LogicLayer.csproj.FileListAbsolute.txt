@@ -1,0 +1,5 @@
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryLogicLayer\obj\Debug\net8.0\3LogicLayer.csproj.AssemblyReference.cache
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryLogicLayer\obj\Debug\net8.0\3LogicLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryLogicLayer\obj\Debug\net8.0\3LogicLayer.AssemblyInfoInputs.cache
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryLogicLayer\obj\Debug\net8.0\3LogicLayer.AssemblyInfo.cs
+C:\Users\Yuri\OneDrive\Documents\Semester 2\Individueel Project (Alliance Explorer)\LO3 Implementation\Alliance Explorer\ClassLibraryLogicLayer\obj\Debug\net8.0\3LogicLayer.csproj.CoreCompileInputs.cache
